@@ -1,0 +1,16 @@
+This list is repated in several files. Search for "POI LIST COPY" string to find when adding/modifying
+
+POI categories
+ * highway
+ * tourism
+ * amenity
+ * shop
+ * craft
+ * leisure
+ * gambling
+ * office
+ * man_made
+ * historic
+ * railway
+ * public_transport
+ * emergency

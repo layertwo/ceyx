@@ -1,0 +1,207 @@
+body {
+	font-family: sans-serif;
+	padding: 0;
+	margin: 0;
+	font-size: 80%;
+}
+body#help {
+	margin: 1em;
+}
+.error {
+	color: #f00;
+	background-color: #fff;
+}
+#content {
+	height: 100%;
+}
+/* Map */
+#map {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 220px;
+	bottom: 0;
+}
+#panels {
+	position: absolute;
+	width: 220px;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+a img {
+	border-width: 0;
+}
+div.zoom {
+	position: absolute;
+	top: 3px;
+	right: 32px;
+	background-color: #007700;
+	color: #fff;
+	font-weight: bold;
+	padding: 2px;
+}
+/* Control panels */
+.panel {
+	margin: 0 0 3px 0;
+	padding: 0 4px;
+}
+div.jobpassed {
+	border: 3px solid #00aa00;
+	padding: 2px;
+}
+div.jobfailed {
+	border: 3px solid #aa0000;
+	padding: 2px;
+	font-weight: bold;
+}
+div.jobpassed h1, div.jobfailed h1 {
+	font-size: 120%;
+}
+div.jobpassed p, div.jobfailed p {
+	margin: 0;
+}
+#progressbar {
+	background: #b4e391; /* Old browsers */
+	background: -moz-linear-gradient(top, #b4e391 0%, #61c419 50%, #b4e391 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b4e391), color-stop(50%,#61c419), color-stop(100%,#b4e391)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #b4e391 0%,#61c419 50%,#b4e391 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #b4e391 0%,#61c419 50%,#b4e391 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #b4e391 0%,#61c419 50%,#b4e391 100%); /* IE10+ */
+	background: linear-gradient(top, #b4e391 0%,#61c419 50%,#b4e391 100%); /* W3C */	
+}
+.panel h2 {
+	font-size: 120%;
+	background-color: #007700;
+	color: #fff;
+	margin: 0 -4px;
+	padding: 2px;
+}
+.panel input {
+	max-width: 200px;
+}
+.beta {
+	font-size: 60%;
+	font-weight: normal;
+}
+#captcha {
+	width: 200px;
+	border: 1px solid #000;
+	margin: 3px 0;
+}
+.clientrender {
+	display: none;
+}
+.important {
+	font-weight: bold;
+}
+#renderForm table {
+	border-collapse: collapse;
+}
+#renderForm table td, #renderForm table th {
+	padding: 0;
+}
+#renderForm table th {
+	font-weight: normal;
+	text-align: left;
+}
+table.infolist {
+	border: 2px solid #bd3529;
+	border-collapse: collapse;
+	background-color: #000;
+	color: #fff;
+}
+table.infolist th {
+	text-align: center;
+}
+table.infolist th, table.infolist td {
+	padding: 3px;
+	border: 2px solid #bd3529;
+}
+/* Search results */
+#results {
+	margin: 0;
+	padding: 0;
+}
+#results li {
+	list-style-type: none;
+	margin-bottom: 0.3em;
+}
+
+/* Project list page */
+#projectlist {
+	margin: 1em;
+}
+#projectlist p {
+	margin: 3px 0;
+}
+#projectlist h2 {
+	margin: 0;
+	font-size: 100%;
+}
+div.project {
+	float: left;
+	width: 302px;
+	margin-left: 15px;
+	text-align: center;
+}
+div.project:first-child {
+	margin-left: 0;
+}
+div.projectrow {
+	width: 936px;
+	margin: 0 auto;
+	clear: both;
+	border-bottom: 1px double black;
+	padding: 15px 0;
+}
+div.projectrow:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+div.preview {
+	margin-bottom: 15px;
+}
+div.project img {
+	border: 1px solid black;
+}
+div.pager {
+	text-align: center;
+	margin: 1em 0;
+	padding-bottom: 1em;
+	font-weight: bold;
+	clear: both;
+	border-bottom: 1px double black;
+}
+form#projectsearch {
+	text-align: center;
+}
+/* Help */
+#menu {
+	width: 150px;
+	float: right;
+	text-align: right;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+#menu li {
+	margin: 0;
+	padding: 0;
+}
+#mapexamples {
+	position: relative;
+	max-width: 100%;
+}
+#mapexamples img {
+	max-width: 100%;
+	max-height: 80vh;
+	position: relative;
+	border: 1px solid black;
+}
+#mapexamples img.altexample {
+	position: absolute;
+	top: 0;
+	left: 0;
+}

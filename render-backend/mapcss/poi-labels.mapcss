@@ -1,0 +1,143 @@
+/*
+ * Zoom 14: POIs display with icon
+ * Zoom 15: display name too
+ * POIs without icon display a placeholder circle
+ * POIs without name display their type
+ * (POI LIST COPY)
+ */
+
+/* Default label is name */
+node|z15-[highway]::label,
+node|z15-[tourism]::label,
+node|z15-[amenity]::label,
+node|z15-[shop]::label,
+node|z15-[craft]::label,
+node|z15-[leisure]::label,
+node|z15-[gambling]::label,
+node|z15-[office]::label,
+node|z15-[healthcare]::label,
+node|z15-[man_made]::label,
+node|z15-[historic]::label,
+node|z15-[railway]::label,
+node|z15-[public_transport]::label,
+node|z15-[emergency]::label {
+    font-size: 12;
+    text: name;
+	text-offset: -18;
+	z-index: 6;
+    max-width: 1000;
+	fill-opacity:0;
+}
+way|z15-[highway]::label,
+way|z15-[tourism]::label,
+way|z15-[amenity]::label,
+way|z15-[shop]::label,
+way|z15-[craft]::label,
+way|z15-[leisure]::label,
+way|z15-[gambling]::label,
+way|z15-[office]::label,
+way|z15-[healthcare]::label,
+way|z15-[man_made]::label,
+way|z15-[historic]::label,
+way|z15-[railway]::label,
+way|z15-[public_transport]::label,
+way|z15-[emergency]::label {
+    font-size: 12;
+    text: name;
+	z-index: 6;
+	fill-opacity:0;
+}
+/* Area */
+way|z14-:closed[highway]::label,
+way|z14-:closed[tourism]::label,
+way|z14-:closed[amenity]::label,
+way|z14-:closed[shop]::label,
+way|z14-:closed[craft]::label,
+way|z14-:closed[leisure]::label,
+way|z14-:closed[gambling]::label,
+way|z14-:closed[office]::label,
+way|z14-:closed[healthcare]::label,
+way|z14-:closed[man_made]::label,
+way|z14-:closed[historic]::label,
+way|z14-:closed[railway]::label,
+way|z14-:closed[public_transport]::label,
+way|z14-:closed[emergency]::label {
+	text-position: center;
+	text-offset: -18;
+	z-index: 6;
+	fill-opacity:0;
+}
+
+/* Fallback labels if no name */
+node|z15-[highway][!name]::label { /* nodes only to avoid on streets */
+	text: highway;
+}
+node|z15-[tourism][!name]::label,
+way|z15-[tourism][!name]::label {
+	text: tourism;
+}
+node|z15-[amenity][!name]::label, 
+way|z15-[amenity][!name]::label {
+	text: amenity;
+}
+node|z15-[shop][!name]::label,
+way|z15-[shop][!name]::label {
+	text: shop;
+}
+node|z15-[craft][!name]::label,
+way|z15-[craft][!name]::label {
+	text: craft;
+}
+node|z15-[leisure][!name]::label,
+way|z15-[leisure][!name]::label {
+	text: leisure;
+}
+node|z15-[gambling][!name]::label,
+way|z15-[gambling][!name]::label {
+	text: gambling;
+}
+node|z15-[office][!name]::label,
+way|z15-[office][!name]::label {
+	text: office;
+}
+node|z15-[healthcare][!name]::label,
+way|z15-[healthcare][!name]::label {
+	text: healthcare;
+}
+node|z15-[man_made][!name]::label,
+way|z15-[man_made][!name]::label {
+	text: man_made;
+}
+node|z15-[historic][!name]::label,
+way|z15-[historic][!name]::label {
+	text: historic;
+}
+node|z15-[railway][!name]::label,
+way|z15-[railway][!name]::label {
+	text: railway;
+}
+
+node|z15-[public_transport][!name]::label,
+way|z15-[public_transport][!name]::label {
+	text: public_transport;
+}
+
+node|z15-[emergency][!name]::label,
+way|z15-[emergency][!name]::label {
+	text: emergency;
+}
+
+/* IMPORTANT: poi-icons.mapcss hides these "noname-labels" when icon is obvious! */
+
+/* Operator as label */
+node|z15-[operator][!name]::label,
+way|z15-[operator][!name]::label {
+	text: operator;
+}
+
+/* "information" as label */
+node|z15-[tourism=information][information][!name]::label,
+way|z15-[tourism=information][information][!name]::label {
+	text: information;
+}
+

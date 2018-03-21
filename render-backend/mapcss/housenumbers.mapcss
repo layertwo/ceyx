@@ -1,0 +1,50 @@
+@import url("style.mapcss");
+@import url("printer.mapcss");
+
+node|z15- [addr:housenumber]::housenumber,
+way|z15-:closed [addr:housenumber]::housenumber {
+    z-index: 7;
+    width: 0;
+    fill-opacity: 0;
+    font-size: 13;
+    text-color: #000;
+    text-halo-color: #fff;
+    text-halo-radius: 1;
+    text: addr:housenumber;
+}
+node|z15- [addr:housenumber]::housenumber {
+	text-position: center;
+}
+
+way|z15- [addr:interpolation]::housenumber {
+	width: 0.4;
+	casing-width: 0.6;
+	color: #999999;
+}
+
+@import url("poi-labels.mapcss");
+
+/* POI icons file is not loaded in "housenumber" style, because 
+   they would need a [!addr:housenumber] rule to avoid overlapping the number.
+   To keep it simple, this is a "dot" "replacement" to all the nice POI icons. */
+
+/* Show all POIs (POI LIST COPY) */
+node|z15-[highway][!addr:housenumber]::icon, 
+node|z15-[tourism][!addr:housenumber]::icon, 
+node|z15-[amenity][!addr:housenumber]::icon, 
+node|z15-[shop][!addr:housenumber]::icon, 
+node|z15-[craft][!addr:housenumber]::icon, 
+node|z15-[leisure][!addr:housenumber]::icon, 
+node|z15-[gambling][!addr:housenumber]::icon,
+node|z15-[office][!addr:housenumber]::icon,
+node|z15-[healthcare][!addr:housenumber]::icon,
+node|z15-[man_made][!addr:housenumber]::icon,
+node|z15-[historic][!addr:housenumber]::icon,
+node|z15-[railway][!addr:housenumber]::icon,
+node|z15-[public_transport][!addr:housenumber]::icon,
+node|z15-[emergency][!addr:housenumber]::icon {
+	icon-image: icons/sjjb/dot16.png;
+	z-index: 6;
+}
+node|z15- [barrier][!addr:housenumber] { icon-image: icons/sjjb/x16.png; }
+node|z15-[public_transport=stop_position][!addr:housenumber]::icon { icon-image: icons/sjjb/dot8.png; }

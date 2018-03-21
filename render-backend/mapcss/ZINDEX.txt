@@ -1,0 +1,151 @@
+Z-INDEX MAP
+
+  10: node|z12-13 [railway=station]::label
+  10: node|z14- [railway=station]::label 
+  10: node [place]
+   9: way:closed[aeroway=aerodrome]::label
+   9: node[aeroway=aerodrome]::label
+   9: way:closed[military=airfield]::label,
+   6: node|z15- [highway=bus_stop]::icon
+   6: node|z14- [amenity=place_of_worship]::icon
+   6: node[tourism]::icon
+   6: node[amenity]::icon
+   6: way[tourism]::icon
+   6: way[amenity]::icon
+   6: node[tourism]::label
+   6: node [amenity]::label
+   6: way[tourism]::label
+   6: way [amenity]::label
+   6: node|z16- [highway=bus_stop]::icon
+   6: node|z15- [highway=traffic_signals]::icon
+   5: way [natural=water]::label
+   5: way [highway]::label 
+   2: node|z16- [amenity=fountain] 
+   2: node|z16- [amenity=fountain]::top 
+   1: node|z16- [amenity=fountain]::bottom
+ 0.5: way [highway=motorway]::centerline 
+ 0.5: way [highway=trunk]::centerline
+ 0.5: way|z15- [highway=cycleway]::centerline 
+ 0.4: way [highway=primary]::centerline 
+ 0.3: way [highway=secondary]::centerline 
+ 0.2: way [highway=tertiary]::centerline 
+ 0.2: way|z13-[aeroway=runway]
+ 0.2: node|z16- [power=tower]
+ 0.1: way|z14- [highway=unclassified]::centerline
+ 0.1: way|z14- [highway=residential]::centerline
+ 0.1: way|z13-[aeroway=taxiway]
+   0: way|z16-:closed [addr:housenumber]::housenumber 
+   0: way [highway]::centerline 
+   0: way [highway=motorway_link]::centerline 
+   0: way [highway=primary_link]::centerline 
+   0: way|z12- [highway=track]::centerline 
+   0: way|z13- [highway=service]::centerline 
+   0: way [railway] 
+   0: way :closed [aeroway=aerodrome]::area 
+-0.1: way|z14-:closed [building]::area
+-0.1: way [natural=water]::area 
+-0.1: way|z14-  [amenity=parking]::area
+-0.1: way:closed[amenity=theatre]::area
+-0.2: way [waterway] 
+-0.5: way [natural] 
+-0.5: way [natural=wetland] 
+-0.8: way|z12-[leisure]
+-0.9: way:closed [!highway]
+-0.9: way[landuse] 
+
+
+
+OSM.XML from top to down as their file
+
+"boundary"='administrative' and admin_level in ('0','1','2','3','4')
+"boundary"='administrative' and admin_level in ('5','6','7','8')
+"boundary"='administrative' and (admin_level is null or admin_level not in ('0','1','2','3','4','5','6','7','8'))
+
+PLACENAMES
+place in ('country','state')
+place in ('city','metropolis','town') and capital='yes'
+place in ('city','metropolis','town','large_town','small_town') and (capital is null or capital != 'yes')
+place in ('suburb','village','large_village','hamlet','locality','isolated_dwelling','farm')
+
+railway in ('station','halt','tram_stop','subway_entrance') or aerialway='station'
+railway in ('station','halt','tram_stop') or aerialway='station'
+
+POINT aeroway in ('airport','aerodrome','helipad')
+	         or barrier in ('bollard','gate','lift_gate','block')
+	         or highway in ('mini_roundabout','gate')
+	         or man_made in ('lighthouse','power_wind','windmill','mast')
+	         or (power='generator' and ("generator:source"='wind' or power_source='wind'))
+	         or "natural" in ('peak','volcano','spring','tree','cave_entrance')
+	         or railway='level_crossing'
+POLYGON aeroway in ('airport','aerodrome','helipad')
+	         or barrier in ('bollard','gate','lift_gate','block')
+	         or highway in ('mini_roundabout','gate')
+	         or man_made in ('lighthouse','power_wind','windmill','mast')
+	         or (power='generator' and ("generator:source"='wind' or power_source='wind'))
+	         or "natural" in ('peak','volcano','spring','tree')
+	         or railway='level_crossing'
+
+POINT amenity is not null
+	         or shop is not null
+	         or tourism in ('alpine_hut','camp_site','caravan_site','guest_house','hostel','hotel','motel','museum','viewpoint','bed_and_breakfast','information','chalet')
+	         or highway in ('bus_stop','traffic_signals','ford')
+	         or man_made in ('mast','water_tower')
+	         or historic in ('memorial','archaeological_site')
+	         or waterway='lock'
+	         or lock='yes'
+	         or leisure in ('playground','slipway')
+
+
+POLYGON amenity is not null
+	         or shop is not null
+	         or tourism in ('alpine_hut','camp_site','caravan_site','guest_house','hostel','hotel','motel','museum','viewpoint','bed_and_breakfast','information','chalet')
+	         or highway in ('bus_stop','traffic_signals')
+	         or man_made in ('mast','water_tower')
+	         or historic in ('memorial','archaeological_site')
+	         or leisure='playground'
+
+POWER stuff - don't care now 
+
+highway in ('motorway','trunk','primary','secondary')
+         and ref is not null
+         and char_length(ref) between 1 and 8
+
+highway='motorway_junction'
+
+waterway IS NULL
+         and leisure IS NULL
+         and landuse IS NULL
+         and name is not null
+
+POINT where amenity is not null
+          or shop in ('supermarket','bakery','clothes','fashion','convenience','doityourself','hairdresser','department_store','butcher','car','car_repair','bicycle','florist')
+          or leisure is not null
+          or landuse is not null
+          or tourism is not null
+          or "natural" is not null
+          or man_made in ('lighthouse','windmill')
+          or place='island'
+          or military='danger_area'
+          or aeroway='gate'
+          or waterway='lock'
+          or historic in ('memorial','archaeological_site')
+
+POLY amenity is not null
+          or shop in ('supermarket','bakery','clothes','fashion','convenience','doityourself','hairdresser','department_store', 'butcher','car','car_repair','bicycle')
+          or leisure is not null
+          or landuse is not null
+          or tourism is not null
+          or "natural" is not null
+          or man_made in ('lighthouse','windmill')
+          or place='island'
+          or military='danger_area'
+          or historic in ('memorial','archaeological_site')
+
+name is not null
+         and (waterway is null or waterway != 'riverbank')
+         and place is null
+
+
+
+highway in ('motorway','motorway_link','trunk','trunk_link','primary','primary_link','secondary','secondary_link','tertiary','tertiary_link','residential','unclassified') and tunnel in ('yes','true','1')
+

@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Render My Map - Help - Render printable OpenStreetMap maps for shop (POI) and housenumber surveys</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script type="text/javascript">
+	function showexample(id) {
+		document.getElementById("alt0").style.zIndex = (id == 0 ? 2 : 1);
+		document.getElementById("alt1").style.zIndex = (id == 1 ? 2 : 1);
+		document.getElementById("alt2").style.zIndex = (id == 2 ? 2 : 1);
+	}
+</script>
+</head>
+<body id="help">
+	<ul id="menu">
+		<li><a href="./">Home</a></li>
+		<li><a href="help.html">Help</a></li>
+		<li><a href="news.html">News</a></li>
+	</ul>
+	<h1><a href="index.php">render(myMap)</a><br/>Create your printed OpenStreetMap maps for local surveys</h1>
+
+<div style="float: right; margin-left: 1em; width:332px; text-align: center;">
+	<img src="images/bad-print.png" style="float: right; margin-left: 1em;" alt="Example of bad print where text overlaps." />
+	<p>Be aware of wrong use! ;-)</p>
+</div>
+<p>This site provides easy way to render specially styled OpenStreetMap maps, for 
+surveying the area. We call it detail survey print, where all objects are rendered.<p>
+
+<p style="font-weight: bold;">
+The map you can view on this site is not the same as that will go to your print!
+You are seeing default OpenStreetMap display, but for print you will get your own very detailed map.</p>
+<p style="font-weight: bold;">Make sure to select a reasonable area and divide to
+the necessary number of pages, based on area's density. Otherwise you will just get overlapping trash.<p>
+
+<h2>Example</h2>
+
+<p>This <a href="index.php?zoom=16&lat=40.42617&lon=-3.69273&box=40.4218,-3.6969,40.43057,-3.68576">part of Madrid</a> is
+<a href="examples/aLcXXyVsx/aLcXXyVsx.html">rendered for shop POI survey</a>. </p>
+
+<h2 style="clear: both;">Usage</h2>
+<div style="float: right; margin-left: 1em; width:332px; text-align: center;">
+	<p><a href="images/mapwarper-example.png"><img src="images/mapwarper-small.png" alt="Printed map loaded under JOSM edited map via mapwarper.net" style="border-width: 0;"></a></p>
+<p><strong>render(myMap) in use</strong></p>
+<p>Printed housenumbers map loaded in <a href="http://www.osmtippek.hu/josm/">JOSM</a> via <a href="http://mapwarper.net/">mapwarper.net</a><p>
+<p><a href="images/mapwarper-rectify.png"><img src="images/mapwarper-rectify-small.png" alt="Viewing scanned paper and OSM map besides, marking identical points with the mouse." style="border-width: 0;"/></a></p>
+<p><strong>mapwarper in use</strong></p>
+<p>You can mark identical points on both OSM and your scanned paper, then use in JOSM as a layer.</p>
+<p><a href="images/mapwarper-example2-big.png"><img src="images/mapwarper-example2.png" alt="Survey notes drawn on the printed map." style="border-width: 0;"/></a></p>
+<p><strong>scanned map example</strong></p>
+<p>Shop moving, house numbers, entrance, and building levels are also noted on this example.</p>
+<div style="text-align: left;">
+	<p>I am sure you'll develop your method, but here are some ideas.</p>
+	<table class="infolist">
+	<tr><th>XI</th><td>on house line: X is the middle, I is the entrance, when near to middle this makes unambiguous</td></tr>
+	<tr><th>I</th><td>on house line: near middle: entrace IS in the middle. Other place: entrance is there</td></tr>
+	<tr><th>O<br/>|<br/>&bull;</th><td>move object</li>
+	<tr><th>X</th><td>not on house line: there is something, not mapped, but should fit, e.g. a shop</td></tr>
+	<tr><th><span style="border: 1px solid white; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;">12</span></th><td>a note below</td></tr>
+	<tr><th>6.</th><td>building levels</td></tr>
+	<tr><th>6</th><td>housenumber</td></tr>
+	<tr><th>\_/</th><td>on house line: there is something on the roof that can help positioning the entrance (Bing)</td></tr>
+	</table>
+</div>
+</div>
+
+<h3>1. Find the area to render</h3>
+<p>To navigate, you can paste an OSM Permalink or city search or mouse.
+You can also jump back to OSM for furhter search by the <em>Open on OSM</em> link.</p>
+
+<h3>2. Select a box</h3>
+<p>Select what to render: <strong>Press Draw box</strong> and draw a box on the screen. 
+When finsihed, you must click the box to activate for modifying.
+You can select maximum 18 square kilometers.</p>
+<p>You can store your selection by using the <em>Permalink</em> link and then bookmark it.
+This link is also added to the output files, so you can return to the same selection.</p>
+
+<h3>3. Specify printing options</h3>
+<p>You can choose to divide to maximum 9 pages.
+Select which style you want to use, shops, housenumbers. See below for more info.
+The papers size selection sets the image's width 
+in CSS. The aspect ratio is up to you to select correctly. We didn't put a limitation on
+this because you way want to print something else, for example squares and leave empty space for notes.</p>
+
+<h3>4. Render</h3>
+<p>Pass your selected area to the renderer by the button. Then wait a little before you click
+the JOB ID link. You can also store your JOB ID and use it in the <em>Download result</em> 
+box later (I don't yet know how long will I keep them).</p>
+<p>Rendering usually takes 1-2 minutes.
+Output are 300 DPI PNG files for printing. </p>
+
+<h3>5. Print</h3>
+<p>For now this is for paper based survey. The overview HTML contais the necessary CSS 3 codes
+for nice printout (decend browser required).</p>
+
+<h3>6. Survey, scan, rectify, implement</h3>
+<p>Now you can use the paper as you wish, but here is how I do.</p>
+<p>Do your survey, take notes on the paper. Scan the results, invert avoid white paper backround in JOSM, convert to JPG for
+smaller size (it does not break the quailty, it's bad already).</p>
+<p>Upload the file to <a href="http://mapwarper.net">MapWarper</a> if you want to view it
+in background of JOSM. This method really rocks. Rectify the map there by marking identical
+points on your paper and OSM, e.g. junctions, house corners. Then in the export 
+tab, copy the JOSM link.</p>
+<p>In JOSM, use the <em>Imagery menu -&gt; 
+	<a href="http://wiki.openstreetmap.org/wiki/JOSM/Plugins/WMSPlugin#Using_a_.22Rectified_Image.22">Rectifed Image</a> -&gt;
+	Custom WMS link</em>, paste the link there.
+When you zoom, you may need to use the right-click on the imagery layer and choose 
+<em>Change resolution</em>, that will update the scanned paper to higher resolution.</p>
+
+
+<h2>Map styles</h2>
+<p>The various rendering styles basically display the same map. The main difference is the choice between
+colliding properties and their level of detail.
+For example, "shops" style displays the POI's icon, "housenumbers" style shows the housenumber instead, if both are known.</p>
+<p>The <strong>Detail</strong> selection specifies how much info to print.
+In full detail mode to this, your map may get a lot of overlapping text, so make sure to print enough small area on enough papers 
+for dense areas.</p>
+<p>Detail levels activate several "draw all" features in the output. So unless you are printing a complete
+smaller town, "Full detail" is recommended.</p>
+<ul>
+	<li>All unknown (style unspecfied) "way" type objects are drawn as black line</li>
+	<li>All POI type nodes without icon display with a general circle: <img src="images/dot16.png" alt="circle" /></li>
+	<li>When name is not available, the point's type is displayed (for example "restaurant", "playground")</li>
+	<li>etc (I'll make a better documentation of this soon)</li>
+</ul>
+<h3>shops</h3>
+<p>This render contains all nodes and ways that are:</p>
+<ul>
+<li><a href="http://wiki.openstreetmap.org/wiki/Key:highway">highway</a></li>
+<li><a href="http://wiki.openstreetmap.org/wiki/Key:tourism">tourism</a></li>
+<li><a href="http://wiki.openstreetmap.org/wiki/Key:amenity">amenity</a></li>
+<li><a href="http://wiki.openstreetmap.org/wiki/Key:shop">shop</a></li>
+<li><a href="http://wiki.openstreetmap.org/wiki/Key:craft">craft</a></li>
+<li><a href="http://wiki.openstreetmap.org/wiki/Key:leisure">leisure</a></li>
+<li><a href="http://wiki.openstreetmap.org/wiki/Key:gambling">gambling</a></li>
+<li><a href="http://wiki.openstreetmap.org/wiki/Key:office">office</a></li>
+<li><a href="http://wiki.openstreetmap.org/wiki/Key:man_made">man_made</a></li>
+<li><a href="http://wiki.openstreetmap.org/wiki/Key:historic">historic</a></li>
+<li><a href="http://wiki.openstreetmap.org/wiki/Key:railway">railway</a></li>
+<li><a href="http://wiki.openstreetmap.org/wiki/Key:public_transport">public_transport</a></li>
+<li><a href="http://wiki.openstreetmap.org/wiki/Key:emergency">emergency</a></li>
+</ul>
+<p>(Multipoly is under progress.) If you have more ideas to render, let me know.</p>
+<h3>housenumbers</h3>
+<p>This renders everything with housenumber: addr: nodes, buildings, addr:interpolation ways, etc.</p>
+<h3>wheelchair</h3>
+<p>This output overrides icons if the object has a wheelchair "yes", "no" or "limited" value.</p>
+<h3>example</h3>
+<p>Toggle a checkbox to compare.</p>
+<form action="#">
+	<input type="radio" name="rdb_example" onclick="showexample(0)" id="rdb_shops" checked="checked"><label for="rdb_shops">Shops</label>
+	<input type="radio" name="rdb_example" onclick="showexample(1)" id="rdb_housenumbers"><label for="rdb_housenumbers">House numbers</label>
+	<input type="radio" name="rdb_example" onclick="showexample(2)" id="rdb_wheelchair"><label for="rdb_wheelchair">Wheelchair</label>
+	<div id="mapexamples">
+		<img id="alt0" style="z-index:2" src="images/render-example-shops.png" alt="Map part, shows POIs with icons." />
+		<img id="alt1" style="z-index:1" src="images/render-example-housenumbers.png" alt="Map part, shows POIs with housenumber in place of icons." />
+		<img id="alt2" style="z-index:1" src="images/render-example-wheelchair.png" alt="Map part, shows POIs with wheelchair accessibility icons." />
+	</div>
+</form>
+</p>
+<h2>See also</h2>
+<ul>
+	<li><a href="news.html">News</a></li>
+	<li>Powered by <a href="http://wiki.openstreetmap.org/wiki/Ceyx">CeyX</a> rendering.</li>
+	<li>Developed by <a href="http://lion.xaraya.hu/">Ferenc Veres</a>.</li>
+	<li><a href="http://www.openstreetmap.hu/">OpenStreetMap Hungary</a> <em>(Az OpenStreetMap magyarországi oldala)</em></li>
+	<li><a href="http://www.osmtippek.hu/">OSM Tippek</a> <em>(Magyar OpenStreeMap szerkesztési oldal)</em></li>
+	<li>Map icons CC-0 from <a href="http://www.sjjb.co.uk/mapicons/">SJJB Management</a></li>
+	<li>Similar projects:  <a href="http://fieldpapers.org/">Field Papers</a>,
+		<a href="http://wiki.openstreetmap.org/wiki/OSM_on_Paper">OSM on paper Wiki page</a>
+		</li>
+</ul>
+<h2>Contact</h2>
+<p><a href="mailto:info@osmtippek.hu">info@osmtippek.hu</a></p>
+<script type="text/javascript">
+// Hide toggling examples on JS-friendly browsers
+document.getElementById("alt1").className = "altexample";
+document.getElementById("alt2").className = "altexample";
+</script>
+</body>
+</html>

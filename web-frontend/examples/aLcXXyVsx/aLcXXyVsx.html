@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html>
+<head>
+<meta name="http-equiv" content="content-type: text/html; charset=utf-8" />
+<title>Render My OpenStreetMap Map</title>
+<style type="text/css">
+div.row {
+	clear: left;
+}
+div.tile {
+	width: 256px;
+	float: left;
+	border: 1px solid black;
+}
+div.tile img {
+	width: 256px;
+}
+.printlabel {
+	display: none;
+}
+
+@media print {
+	body {
+		margin: 0;
+		padding: 0 1.5cm;
+	}
+	div.tile {
+		float: none;
+		page-break-after: always;
+		width: 100%;
+		height: auto;
+	}
+	div.tile img {
+		width: 100%;
+		height: auto;
+	}
+	div.map div.row:last-child div.tile:last-child {
+		page-break-after: auto;
+	}
+	.printlabel {
+		margin-bottom: 1.5cm;
+		display: block;
+	}
+	div.screentitle {
+		display: none;
+	}
+}
+
+</style>
+</head>
+<body>
+	<div class="screentitle">
+		<p>When printed, the layout is optimized for printing.</p>
+	</div>
+<div class="map">
+<div class="row">
+<div class="printlabel">Zoom: 16. Tile: 32095, 24708. Job ID: aLcXXyVsx. <a href="http://render.osmtippek.hu/index.php?x=32095&y=24708&zoom=16&select=16,32095,24708,32096,24709">Show on render(myMap)</a></div><div class="tile"><a href="16/32095/24708.png"><img src="16/32095/24708.png"></a></div>
+<div class="printlabel">Zoom: 16. Tile: 32096, 24708. Job ID: aLcXXyVsx. <a href="http://render.osmtippek.hu/index.php?x=32095&y=24708&zoom=16&select=16,32095,24708,32096,24709">Show on render(myMap)</a></div><div class="tile"><a href="16/32096/24708.png"><img src="16/32096/24708.png"></a></div>
+</div>
+<div class="row">
+<div class="printlabel">Zoom: 16. Tile: 32095, 24709. Job ID: aLcXXyVsx. <a href="http://render.osmtippek.hu/index.php?x=32095&y=24708&zoom=16&select=16,32095,24708,32096,24709">Show on render(myMap)</a></div><div class="tile"><a href="16/32095/24709.png"><img src="16/32095/24709.png"></a></div>
+<div class="printlabel">Zoom: 16. Tile: 32096, 24709. Job ID: aLcXXyVsx. <a href="http://render.osmtippek.hu/index.php?x=32095&y=24708&zoom=16&select=16,32095,24708,32096,24709">Show on render(myMap)</a></div><div class="tile"><a href="16/32096/24709.png"><img src="16/32096/24709.png"></a></div>
+</div>
+
+</div>
+</body>
+</html>

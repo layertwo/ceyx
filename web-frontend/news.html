@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html>
+<head>
+<meta name="http-equiv" content="content-type: text/html; charset=utf-8" />
+<title>Render My Map - News - Render printable OpenStreetMap maps for shop (POI) and housenumber surveys</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body id="help">
+	<ul id="menu">
+		<li><a href="./">Home</a></li>
+		<li><a href="help.html">Help</a></li>
+		<li><a href="news.html">News</a></li>
+	</ul>
+	<h1><a href="index.php">render(myMap)</a> - News and updates</h1>
+
+
+	<h2>2018.03.18.</h2>
+	<ul>
+		<li>Minor fixes to print misalignments</li>
+		<li>Changed all osm.org URLs to HTTPS so they work again</li>
+		<li>Separated stlyle for whleechair accessibility</li>
+	</ul>
+	<h2>2014.08.08.</h2>
+	<ul>
+		<li>Render all <a href="http://wiki.openstreetmap.org/wiki/Key:highway">highway=*</a> nodes, ways and areas (so bus_stop name is shown, zebra crossing and so on)</li>
+		<li>Render all <a href="http://wiki.openstreetmap.org/wiki/Key:public_transport">public_transport=*</a> nodes, ways and areas (stop_position is a small dot)</li>
+		<li>Render <a href="http://wiki.openstreetmap.org/wiki/Key:wheelchair">wheelchair=*</a>, overrides other icons, so it may need a new "style" option</li>
+		<li>Show <a href="http://wiki.openstreetmap.org/wiki/Key:operator">operator</a> as label if object has no name.</li>
+	</ul>
+	<h2>2013.08.19.</h2>
+	<ul>
+		<li>Render all <a href="http://wiki.openstreetmap.org/wiki/Key:emergency">emergency=*</a> nodes, ways and areas (so far only fire hydrant has an icon)</li>
+	</ul>
+	<h2>2013.04.17.</h2>
+	<ul>
+		<li>Render all <a href="http://wiki.openstreetmap.org/wiki/Key:railway">railway=*</a> nodes, ways and areas</li>
+		<li>Added a "Detail" selection dropdown, instead autoselecting detail from current view's zoom</li>
+		<li>Show more warnings for bad looking paper selection</li>
+	</ul>
+	<h2>2013.04.14.</h2>
+	<ul>
+	<li>Render all <a href="http://wiki.openstreetmap.org/wiki/Key:historic">historic=*</a> nodes, ways and areas</li>
+	<li>Render all <a href="http://wiki.openstreetmap.org/wiki/Key:barrier">barrier=*</a> nodes as an "x"</li>
+	<li>Include all images in render list thumbnails, not only first output tile</li>
+	</ul>
+	<h2>2013.04.10.</h2>
+	<ul>
+		<li><strong>GUI rewritten in OpenLayers</strong></li>
+		<li>Searchable list of previous renders (instead simple dir index)</li>
+		<li>Support for adding a note to render, so it can be searched later</li>
+		<li>Paper size selection (it's a CSS "width" rule, report if not good for your printer)</li>
+		<li>Show area width/height on print</li>
+		<li>Dropped "OSM tile based selection"</li>
+		<li>Selection does not work well on IE (but also on original <a href="http://openlayers.org/dev/examples/modify-feature.html">OL example</a>, sorry!)</li>
+	</ul>
+	<h2>2013.04.06.</h2>
+	<ul>
+		<li>Better CAPTCHA, that does not require SVG.</li>
+	</ul>
+	<h2>2012.04.17.</h2>
+	<ul>
+		<li>300 DPI PNGs are back, because 600 DPI didn't increase printing quality as expected</li>
+		<li>Most icons are black now, for better visiblity</li>
+		<li>Bigger icons</li>
+		<li>Print date</li>
+		<li>Render healthcare POIs</li>
+		<li>Show "operator" for ATM and Fuel without name</li>
+	</ul>
+
+	<h2><img style="float: right; border: 1px solid #888;" src="images/demo1.png" title="Improved rendering of little towns."/>2012.03.28.</h2>
+
+	<ul>
+		<li>Output PNGs are 600 DPI instead 300</li>
+		<li>Add search function</li>
+		<li>Allow 11 square km in box selection instead 2x2 km</li>
+		<li>Better way styles (darker casing, show path)</li>
+		<li>Render <a href="http://wiki.openstreetmap.org/wiki/Key:man_made">man_made=*</a></li>
+		<li>Better header on screen output: date, link to selection, job id</li>
+		<li>Footer with (1) (2) (..) mapper hint</li>
+		<li>Show POIs icons from z14 (labels are still only from z15)</li>
+		<li>Show render progress bar</li>
+		<li>Instant start of rendering</li>
+		<li>Show landuse area again (may need a checkbox)</li>
+		<li>Won't render "wetland" (overflows due to huge multipoly missing parts)</li>
+	</ul>
+
+	<h2>2011.11.21.</h2>
+
+	<ul>
+		<li>Remember box selection even if moved outside</li>
+		<li>Add more text info to prints</li>
+		<li>Generate HTML for one-page box selection too</li>
+		<li>Support 1x3 and 3x1 page format</li>
+	</ul>
+
+	<a href="images/rendermymap-old.png"><img style="float: right; border: 1px solid #888;" src="images/rendermymap-old-thumb.png" title="render(myMap) original GUI" alt="Screenshot showing this software: a map and options for printing" /></a>
+	<h2>2011.11.08.</h2>
+	<ul>
+		<li>Show ways in parks</li>
+		<li>Render "leisure", trees</li>
+		<li>More highways display street name.</li>
+		<li>Generate HTML in one tile mode too (helps printing)</li>
+		<li>Hide commercial and some other areas</li>
+		<li>Add "Open on OSM" link</li>
+	</ul>
+
+	<h2>2011.10.05.</h2>
+	<ul>
+		<li>Print tile info and link</li>
+		<li>No housenumber on POIs in POI mode</li>
+		<li>Keep box selection on zoom and move</li>
+	</ul>
+
+<h2>See also</h2>
+
+<ul>
+	<li><a href="help.html">Help / About</a></li>
+	<li><a href="todo.txt">todo.txt</a></li>
+</ul>
+
+<h2>Contact</h2>
+<p>Ferenc Veres <a href="mailto:info@osmtippek.hu">info@osmtippek.hu</a></p>
+</body>
+</html>

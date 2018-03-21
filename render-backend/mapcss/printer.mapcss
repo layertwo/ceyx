@@ -1,0 +1,117 @@
+/* Render all ways. Orig: z17-z19 only */
+way|z14- { color:black; width: 2; }
+canvas { fill-color: #ffffff; }
+
+/* POI related area defaults (POI LIST COPY) */
+way|z14-:closed[tourism], 
+way|z14-:closed[amenity], 
+way|z14-:closed[shop], 
+way|z14-:closed[craft], 
+way|z14-:closed[leisure], 
+way|z14-:closed[gambling],
+way|z14-:closed[office],
+way|z14-:closed[healthcare],
+way|z14-:closed[man_made],
+way|z14-:closed[historic],
+way|z14-:closed[railway],
+way|z14-:closed[public_transport],
+way|z14-:closed[emergency] {
+	color: black; 
+	fill-color: none;
+	width: 1;
+	z-index: -0.2;
+}
+
+
+/* light fills for paper */
+way [landuse=residential] {fill-color: none; }
+way|z13- [landuse=commercial] {fill-color: none; }
+way|z13- [landuse=industrial] {fill-color: none; }
+way|z13- [landuse=retail] {fill-color: none; }
+
+/* Water */
+way [natural=water]::area  { fill-color: #3D75CE; }
+way [waterway=riverbank]::area  { fill-color: #3D75CE; }
+way [natural=wetland]::area  { fill-color: none; color: none; } /* Fails badly near Tisza due to incomplete relation download */
+way [waterway] { bezier: yes; color: #3D75CE;}
+way [waterway=river] { width: 36; }
+way [waterway=canal] { width: 24; }
+way [waterway=stream] { width: 18; }
+
+/* Buildings OSM like colors */
+way|z14-:closed [building]::area {
+    fill-color: #d6cbcb;
+    color: #8e7b8d;
+    width: 0.5;
+}
+
+/* highways - much wider for print */
+way|z14- [highway=motorway],
+way|z14- [highway=trunk] {width: 28;}
+way|z14- [highway=motorway_link] {width: 14;}
+way|z14- [highway=primary] {width: 24;}
+way|z14- [highway=primary_link] {width: 12;}
+way|z14- [highway=secondary] {width: 20;}
+way|z14- [highway=tertiary] {width: 19;}
+way|z14- [highway=unclassified] {width: 18;}
+way|z14- [highway=residential] {width: 18;}
+way|z14- [highway=track] {width:3;}
+way|z14- [highway=service] {width: 8;}
+way|z14- [highway=cycleway] {width: 3;}
+way|z14- [highway=footway] {width: 2;}
+way|z14- [highway=path] {width: 2;}
+
+/* Way labels */
+way|z14- [highway]::label {
+    font-size: 12; 
+	text: name;
+	fill-opacity: 0;
+}
+
+way [highway]::centerline {
+    z-index: 2;
+	casing-width: 2;
+	casing-color: #000000;
+}
+way [bridge=1][highway]::centerline {
+	casing-width: 5;
+}
+
+/* No casing for dashed ways */
+way [highway=track]::centerline,
+way [highway=footway]::centerline,
+way [highway=path]::centerline {
+	dashes: 10,10;
+	casing-width: 0;
+}
+
+/* Way colors */
+way [highway=track]::centerline {color: #af7728;}
+way [highway=footway]::centerline {color: #000;}
+way [highway=path]::centerline {color: #00a400;}
+
+/* Lighter way fills */
+/*way [highway=primary]::centerline {color: #ffa5ab;}
+way [highway=primary_link]::centerline {color: #ffa5ab;}
+way [highway=secondary]::centerline {color: #fefeb3;}
+way [highway=tertiary]::centerline {color: #ffffb0;}*/
+way [highway=service]::centerline {color: #f3f3f3;}
+
+/* Fonts for 300 DPI */ 
+way[highway]::label { font-size: 12; }
+node|z14- [railway=station]::label { font-size: 12; }
+node|z13- [place] { font-size: 18; }
+
+/* FIXME: remove original POI stuff!? */
+
+/* Misc */
+node|z15- [natural=tree] { icon-image: icons/mapnik/tree2.png; }
+way|z14- [leisure=pitch] { fill-color: #1ed01e; }
+way|z14- [landuse=cemetery] { fill-image: icons/sjjb/cemetary.png; color: black; width: 1; fill-color: none; }
+way|z14- [leisure=playground] { fill-color: #eefa64; }
+way|z14- [leisure=park] { fill-color: #8cbe80; fill-opacity: 0.2;}
+
+/* Z-Index only */
+way|z14-:closed [leisure=park] { z-index: -0.8; }
+way|z14-:closed [landuse=cemetery] { z-index: -0.8; }
+

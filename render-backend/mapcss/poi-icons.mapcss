@@ -1,0 +1,204 @@
+/*
+ * Zoom 14: POIs display with icon
+ * Zoom 15: display name too
+ * POIs without icon display a placeholder circle
+ * POIs without name display their type
+ * (POI LIST COPY)
+ */
+
+/* Show all POIs */
+node|z15-[highway]::icon, 
+node|z15-[tourism]::icon, 
+node|z15-[amenity]::icon, 
+node|z15-[shop]::icon, 
+node|z15-[craft]::icon, 
+node|z15-[leisure]::icon, 
+node|z15-[gambling]::icon,
+node|z15-[office]::icon,
+node|z15-[healthcare]::icon,
+node|z15-[man_made]::icon,
+node|z15-[historic]::icon,
+node|z15-[railway]::icon,
+node|z15-[public_transport]::icon,
+node|z15-[emergency]::icon {
+	icon-image: icons/sjjb/dot16.png;
+	z-index: 6;
+}
+
+way|z15-[tourism]::icon, 
+way|z15-[amenity]::icon, 
+way|z15-[shop]::icon, 
+way|z15-[craft]::icon, 
+way|z15-[leisure]::icon, 
+way|z15-[gambling]::icon,
+way|z15-[office]::icon,
+way|z15-[healthcare]::icon,
+way|z15-[man_made]::icon,
+way|z15-[historic]::icon,
+way|z15-[railway]::icon,
+way|z15-[public_transport]::icon,
+way|z15-[emergency]::icon {
+	z-index: 6;
+	fill-opacity:0;
+}
+
+/* Hide noname-labels when icon is obvious, add more! */
+node|z15- [amenity=pharmacy][!name]::label,
+node|z15- [amenity=recycling][!name]::label,
+node|z15- [amenity=convenience][!name]::label,
+node|z15- [amenity=bar][!name]::label,
+node|z15- [amenity=pub][!name]::label,
+node|z15- [amenity=toilets][!name]::label,
+node|z15- [amenity=restaurant][!name]::label,
+node|z15- [amenity=drinking_water][!name]::label,
+node|z15- [amenity=fountain][!name]::label,
+node|z15- [public_transport=stop_position][!name]::label,
+node|z15- [highway=crossing][!name]::label,
+node|z15- [highway=traffic_signals][!name]::label,
+node|z15- [emergency=fire_hydrant][!name]::label {
+	text: none;
+}
+
+/* Show all abandoned and disused as an icon only, no label.
+   Ways are handled by the all-ways style in style.css. */
+node|z15-[disused:highway]::icon, 
+node|z15-[disused:tourism]::icon, 
+node|z15-[disused:amenity]::icon, 
+node|z15-[disused:shop]::icon, 
+node|z15-[disused:craft]::icon, 
+node|z15-[disused:leisure]::icon, 
+node|z15-[disused:gambling]::icon,
+node|z15-[disused:office]::icon,
+node|z15-[disused:healthcare]::icon,
+node|z15-[disused:man_made]::icon,
+node|z15-[disused:historic]::icon,
+node|z15-[disused:railway]::icon,
+node|z15-[disused:public_transport]::icon,
+node|z15-[disused:emergency]::icon,
+
+node|z15-[abandoned:highway]::icon, 
+node|z15-[abandoned:amenity]::icon, 
+node|z15-[abandoned:shop]::icon, 
+node|z15-[abandoned:craft]::icon, 
+node|z15-[abandoned:leisure]::icon, 
+node|z15-[abandoned:gambling]::icon,
+node|z15-[abandoned:office]::icon,
+node|z15-[abandoned:healthcare]::icon,
+node|z15-[abandoned:man_made]::icon,
+node|z15-[abandoned:historic]::icon,
+node|z15-[abandoned:railway]::icon,
+node|z15-[abandoned:public_transport]::icon,
+node|z15-[abandoned:emergency]::icon {
+	icon-image: icons/sjjb/dot16.png;
+	z-index: 6;
+}
+
+/* Amenity icons */
+node|z14- [amenity=restaurant]::icon { icon-image: icons/sjjb/food_restaurant.p.000000.24.png; }
+node|z14- [amenity=restaurant][cuisine=pizza]::icon { icon-image: icons/sjjb/food_pizza.p.000000.24.png; }
+node|z14- [amenity=fast_food]::icon { icon-image: icons/sjjb/food_fastfood2.p.734A08.24.png; }
+node|z14- [amenity=drinking_water]::icon { icon-image: icons/sjjb/food_drinkingtap.p.000000.24.png; }
+node|z14- [amenity=pub]::icon { icon-image: icons/sjjb/food_pub.p.734A08.24.png; }
+node|z14- [amenity=bar]::icon { icon-image: icons/sjjb/food_bar.p.000000.24.png; }
+node|z14- [amenity=cafe]::icon { icon-image: icons/sjjb/food_cafe.p.000000.24.png; }
+node|z14- [amenity=biergarten]::icon { icon-image: icons/sjjb/food_biergarten.p.000000.24.png; }
+node|z14- [amenity=ice_cream]::icon { icon-image: icons/sjjb/food_ice_cream.p.000000.24.png; }
+node|z14- [amenity=kindergarten]::icon { icon-image: icons/sjjb/education_nursery.n.0092DA.24.png; }
+node|z14- [amenity=school]::icon { icon-image: icons/sjjb/education_school.p.000000.24.png; }
+node|z14- [amenity=college]::icon { icon-image: icons/sjjb/education_college_vocational.p.000000.24.png; }
+node|z14- [amenity=library]::icon { icon-image: icons/sjjb/amenity_library.p.000000.24.png; }
+node|z14- [amenity=university]::icon { icon-image: icons/sjjb/education_university.p.000000.24.png; }
+node|z14- [amenity=bicycle_parking]::icon { icon-image: icons/sjjb/transport_parking_bicycle.p.0092DA.24.png; }
+node|z14- [amenity=bicycle_rental]::icon { icon-image: icons/sjjb/transport_rental_bicycle.p.000000.24.png; }
+node|z14- [amenity=bus_station]::icon { icon-image: icons/sjjb/transport_bus_station.p.000000.24.png; }
+node|z14- [amenity=car_rental]::icon { icon-image: icons/sjjb/transport_rental_car.p.734A08.24.png; }
+node|z14- [amenity=fuel]::icon { icon-image: icons/sjjb/transport_fuel.p.0092DA.24.png; }
+node|z14- [amenity=parking]::icon { icon-image: icons/sjjb/transport_parking.n.0092DA.24.png; }
+node|z14- [amenity=taxi]::icon { icon-image: icons/sjjb/transport_taxi_rank.n.0092DA.24.png; }
+node|z14- [amenity=atm]::icon { icon-image: icons/sjjb/money_atm2.p.000000.24.png; }
+node|z14- [amenity=bank]::icon { icon-image: icons/sjjb/money_bank2.p.000000.24.png; }
+node|z14- [amenity=bureau_de_change]::icon { icon-image: icons/sjjb/money_currency_exchange.p.000000.24.png; }
+node|z14- [amenity=pharmacy]::icon { icon-image: icons/sjjb/health_pharmacy.p.39AC39.24.png; }
+node|z14- [amenity=hospital]::icon { icon-image: icons/sjjb/health_hospital.p.DA0092.24.png; }
+node|z14- [amenity=dentist]::icon { icon-image: icons/sjjb/health_dentist.n.0092DA.24.png; }
+node|z14- [amenity=doctors]::icon { icon-image: icons/sjjb/health_doctors2.n.0092DA.24.png; }
+node|z14- [amenity=veterinary]::icon { icon-image: icons/sjjb/health_veterinary.n.0092DA.24.png; }
+node|z14- [amenity=cinema]::icon { icon-image: icons/sjjb/tourist_cinema.p.000000.24.png; }
+node|z14- [amenity=fountain]::icon { icon-image: icons/sjjb/amenity_fountain.p.0092DA.24.png; }
+way|z14- [amenity=theatre]::icon,
+node|z14- [amenity=theatre]::icon { icon-image: icons/sjjb/tourist_theatre.p.000000.24.png; }
+node|z14- [amenity=bench]::icon { icon-image: icons/sjjb/amenity_bench.p.000000.24.png; }
+node|z14- [amenity=clock]::icon { icon-image: icons/sjjb/tourist_clock.p.000000.24.png; }
+node|z14- [amenity=courthouse]::icon { icon-image: icons/sjjb/amenity_court.p.000000.24.png; }
+node|z14- [amenity=embassy]::icon { icon-image: icons/sjjb/poi_embassy2.n.000000.24.png; }
+node|z14- [amenity=fire_station]::icon { icon-image: icons/sjjb/amenity_firestation.n.DA0092.24.png; }
+node|z14- [amenity=marketplace]::icon { icon-image: icons/sjjb/shopping_marketplace.n.000000.24.png; }
+node|z14- [amenity=place_of_worship]::icon { icon-image: icons/sjjb/place_of_worship_christian.p.000000.24.png; }
+node|z14- [amenity=police]::icon { icon-image: icons/sjjb/amenity_police.p.000000.24.png; }
+node|z14- [amenity=post_box]::icon { icon-image: icons/sjjb/amenity_post_box.p.000000.24.png; }
+node|z14- [amenity=post_office]::icon { icon-image: icons/sjjb/amenity_post_office.p.000000.24.png; }
+node|z14- [amenity=recycling]::icon { icon-image: icons/sjjb/amenity_recycling.p.39AC39.24.png; }
+node|z14- [amenity=shelter]::icon { icon-image: icons/sjjb/accommodation_shelter2.p.000000.24.png; }
+node|z14- [amenity=telephone]::icon { icon-image: icons/sjjb/amenity_telephone.p.000000.24.png; }
+node|z14- [amenity=toilets]::icon { icon-image: icons/sjjb/amenity_toilets.n.666666.24.png; }
+node|z14- [amenity=townhall]::icon { icon-image: icons/sjjb/amenity_town_hall.p.000000.24.png; }
+node|z14- [amenity=waste_basket]::icon { icon-image: icons/sjjb/amenity_waste_bin.p.000000.24.png; }
+
+/* Shop icons */
+node|z14- [shop=alcohol]::icon { icon-image: icons/sjjb/shopping_alcohol.p.000000.24.png; }
+node|z14- [shop=bakery]::icon { icon-image: icons/sjjb/shopping_bakery.p.000000.24.png; }
+node|z14- [shop=bicycle]::icon { icon-image: icons/sjjb/shopping_bicycle.p.000000.24.png; }
+node|z14- [shop=butcher]::icon { icon-image: icons/sjjb/shopping_butcher2.p.000000.24.png; }
+node|z14- [shop=car]::icon { icon-image: icons/sjjb/shopping_car.p.000000.24.png; }
+node|z14- [shop=car_repair]::icon { icon-image: icons/sjjb/shopping_car_repair.p.000000.24.png; }
+node|z14- [shop=clothes]::icon { icon-image: icons/sjjb/shopping_clothes.p.000000.24.png; }
+node|z14- [shop=computer]::icon { icon-image: icons/sjjb/shopping_computer.p.666666.24.png; }
+node|z14- [shop=confectionery]::icon { icon-image: icons/sjjb/shopping_confectionery.p.000000.24.png; }
+node|z14- [shop=convenience]::icon { icon-image: icons/sjjb/shopping_convenience.p.AC39AC.24.png; }
+node|z14- [shop=copyshop]::icon { icon-image: icons/sjjb/shopping_copyshop.n.000000.24.png; }
+node|z14- [shop=doityourself]::icon { icon-image: icons/sjjb/shopping_diy.p.000000.24.png; }
+node|z14- [shop=florist]::icon { icon-image: icons/sjjb/shopping_florist.p.AC39AC.24.png; }
+node|z14- [shop=garden_centre]::icon { icon-image: icons/sjjb/shopping_garden_centre.n.39AC39.24.png; }
+node|z14- [shop=gift]::icon { icon-image: icons/sjjb/shopping_gift.p.AC39AC.24.png; }
+node|z14- [shop=greengrocer]::icon { icon-image: icons/sjjb/shopping_greengrocer.p.39AC39.24.png; }
+node|z14- [shop=hairdresser]::icon { icon-image: icons/sjjb/shopping_hairdresser.p.000000.24.png; }
+node|z14- [shop=jewelry]::icon { icon-image: icons/sjjb/shopping_jewelry2.p.000000.24.png; }
+node|z14- [shop=laundry]::icon { icon-image: icons/sjjb/shopping_laundrette.p.000000.24.png; }
+node|z14- [shop=mobile_phone]::icon { icon-image: icons/sjjb/shopping_mobile_phone.p.000000.24.png; }
+node|z14- [shop=pet]::icon { icon-image: icons/sjjb/shopping_pet2.p.000000.24.png; }
+node|z14- [shop=seafood]::icon { icon-image: icons/sjjb/shopping_fish.p.0092DA.24.png; }
+node|z14- [shop=supermarket]::icon { icon-image: icons/sjjb/shopping_supermarket.p.AC39AC.24.png; }
+node|z14- [shop=tobacco]::icon { icon-image: icons/sjjb/shopping_tobacco.p.000000.24.png; }
+node|z14- [shop=toys]::icon { icon-image: icons/sjjb/shopping_toys.p.000000.24.png; }
+
+/* Office icons */
+node|z14- [office=estate_agent]::icon { icon-image: icons/sjjb/shopping_estateagent2.p.000000.24.png; }
+
+/* Leisure icons */
+node|z14- [leisure=playground]::icon, way|z14-:closed [leisure=playground]::icon { icon-image: icons/sjjb/amenity_playground.p.734A08.24.png; }
+
+/* Tourism icons */
+node|z14- [tourism=camp_site]::icon, way|z14-:closed [tourism=camp_site]::icon { icon-image: icons/sjjb/accommodation_camping.p.0092DA.24.png; }
+node|z14- [tourism=hotel]::icon, way|z14-:closed [tourism=hotel]::icon { icon-image: icons/sjjb/accommodation_hotel2.n.0092DA.24.png; }
+
+/* Man made */
+node|z14- [man_made=water_tower]::icon { icon-image: icons/sjjb/water_tower.p.000000.24.png; }
+node|z14- [man_made=windmill]::icon { icon-image: icons/sjjb/tourist_windmill.p.000000.24.png; }
+
+/* Emergency */
+node|z14- [emergency=fire_hydrant]::icon { icon-image: icons/sjjb/fire_hydrant_feri.png; }
+
+/* Public transport */
+node|z14- [public_transport=stop_position]::icon { icon-image: icons/sjjb/dot8.png; }
+node|z14- [public_transport=platform]::icon { icon-image: icons/sjjb/transport_bus_stop.p.0092DA.24.png; }
+node|z14- [highway=bus_stop]::icon { icon-image: icons/sjjb/transport_bus_stop.p.0092DA.24.png; }
+node|z14- [highway=crossing]::icon { icon-image: icons/sjjb/zebra_crossing_feri.png; }
+
+/* Barriers - nodes default to an "x" */
+node|z14- [barrier] { icon-image: icons/sjjb/x16.png; }
+node|z14- [barrier=entrance]{ icon-image: icons/sjjb/barrier_entrance.png; }
+node|z14- [barrier=gate] { icon-image: icons/sjjb/barrier_gate.p.000000.24.png; }
+node|z14- [barrier=block] { icon-image: icons/sjjb/barrier_blocks.p.000000.24.png; }
+node|z14- [barrier=bollard] { icon-image: icons/sjjb/barrier_bollard.p.000000.24.png; }
+node|z14- [barrier=lift_gate] { icon-image: icons/sjjb/barrier_lift_gate.p.000000.24.png; }
+

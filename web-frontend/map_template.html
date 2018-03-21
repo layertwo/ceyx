@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>render(myMap) - {notes}</title>
+<style type="text/css">
+a img {
+	border-width: 0;
+}
+div.row {
+	clear: left;
+}
+div.tile {
+	width: 256px;
+	float: left;
+	border: 1px solid black;
+	position: relative;
+}
+div.tile a {
+	display: block;
+}
+div.tile img {
+	width: 256px;
+}
+.printlabel {
+	display: none;
+}
+/* Mini overivew map */
+table.overview {
+	border-collapse: collapse;
+	border: 1px solid black;
+	display: none;
+	float: right;
+	font-size: 30%;
+}
+table.overview td {
+	border: 1px solid black;
+	width: 0.2cm;
+	height: 0.2cm;
+	text-align: center;
+	font-weight: bold;
+}
+
+@media print {
+	body {
+		margin: 0;
+		padding: 0;
+	}
+	div.tile {
+		float: none;
+		page-break-after: always;
+		width: 17cm;
+		height: auto;
+		margin: 0 auto;
+	}
+	body.a4l div.tile {
+		width: 25cm; /* FIXME: untested */
+	}
+	body.letterp div.tile {
+		width: 6.9in; /* FIXME: untested 8.5 - 1.6 inch margin */
+	}
+	body.letterl div.tile {
+		width: 9.4in; /* FIXME: untested 11 - 1.6 inch margin */
+	}
+	div.tile img {
+		width: 100%;
+		height: auto;
+	}
+	div.tile a:before {
+		position: absolute;
+		content: "\2190" "{meterx}m" "\2192";
+		top: 0;
+		left: 0;
+		width: 100%;
+		text-align: center;
+		color: black;
+	}
+	div.tile a:after {
+		position: absolute;
+		content: "\2190" "{metery}m" "\2192";
+		top: 50%;
+		left: 0px;
+		vertical-align: center;
+		color: black;
+		-webkit-transform-origin: 0 0;
+		-moz-transform-origin:    0 0;
+		-ms-transform-origin:     0 0;
+		-o-transform-origin:      0 0;
+		-webkit-transform: rotate(-90deg); 
+		-moz-transform: rotate(-90deg);
+		transform: rotate(-90deg);
+		-o-transform: rotate(-90deg);
+		-ms-transform: rotate(-90deg);
+	}
+	
+	div.map div.row:last-child div.tile:last-child {
+		page-break-after: auto;
+	}
+	.printlabel {
+		margin-bottom: 0.2cm;
+		display: block;
+		font-size: 50%;
+	}
+	div.screentitle {
+		display: none;
+	}
+	table.overview {
+		display: table;
+	}
+}
+
+</style>
+</head>
+<body class="{paper}">
+	<div class="screentitle">
+		<p>When printed, the layout is optimized for printing on {printon} paper.<br/>
+		<a href="{url}">render(myMap) job ID: {jobid}</a> - Pages: {pages} - {date} - <strong>{notes}</strong><br/>
+		Map data &copy; <a href="http://www.openstreetmap.org/">OpenSteetMap</a> and contributors 
+		<a href="http://www.openstreetmap.org/copyright">ODbL</a></p>
+	</div>
+<div class="map">
+{map}
+</div>
+</body>
+</html>
