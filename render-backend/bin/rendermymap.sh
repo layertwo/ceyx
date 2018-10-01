@@ -5,7 +5,7 @@
 
 . /home/render/bin/rendermymap.config
 
-APIURL=http://api.openstreetmap.org
+APIURL=https://lz4.overpass-api.de/api/interpreter
 JOB=$1
 DIR=`dirname $1`
 FILE=`basename $1`
@@ -49,8 +49,8 @@ fi
 
 # Download OSM Data (parameter is bbox string)
 function downloadosm {
-	echo wget "$APIURL/api/0.6/map?bbox=$1" -O "$OSMFILE"
-	wget "$APIURL/api/0.6/map?bbox=$1" -O "$OSMFILE" 2>&1
+	echo wget "$APIURL?data=[out:xml][timeout:25];(node($1);way($1);relation($1););out meta;>;out meta qt;"
+	wget "$APIURL?data=[out:xml][timeout:25];(node($1);way($1);relation($1););out meta;>;out meta qt;" -O "$OSMFILE" 2>&1
 	if [ "$?" != "0" ] 
 	then
 		errorexit "Error: wget returned error code $?"
@@ -82,7 +82,7 @@ then
 			rm -f "$JOB"
 
 			# FIXME: check area somehow? 
-			downloadosm "$LON1,$LAT1,$LON2,$LAT2"
+			downloadosm "$LAT1,$LON1,$LAT2,$LON2"
 			mkdir "$DLDIR"
 
 			echo ./osm2png.py -s ${PAGEPX} -a -z $ZOOM -b $RAT1,$RON1,$RAT2,$RON2 -r "$CSS.mapcss" -d "$OSMFILE" -o "$DLDIR/map$ZOOM.png"
@@ -97,7 +97,7 @@ then
 			rm -f "$JOB"
 
 			# FIXME: check area somehow? 
-			downloadosm "$LON1,$LAT1,$LON2,$LAT2"
+			downloadosm "$LAT1,$LON1,$LAT2,$LON2"
 			mkdir "$DLDIR"
 
 			echo ./osm2png.py -s ${PAGEPX} -a -z $ZOOM -b $RAT1,$RON1,$RAT2,$RON2 --batch=$W,$H -r "$CSS.mapcss" -d "$OSMFILE" -o "$DLDIR"
