@@ -43,8 +43,8 @@ if(array_key_exists("render", $_POST)) {
 ?>
 <div class="jobpassed">
 <h1>Processing....</h1>
-<p>Your map have been passed to the renderer. <strong>Remember</strong> you
-must keep your JOB ID, otherwise you cannot download your map!</p>
+<p>Your map have been passed to the renderer. <strong>Wait</strong> for
+it to be complete.</p>
 <p><strong>Job ID: <a id="joblink" href="output/<?php echo($jobid); ?>/<?php echo($jobid); ?>.html" target="_blank"><?php echo($jobid); ?></a></strong> 
 <span id="renderstatus">Working</span>
 <span id="progressbar"></span>
@@ -155,7 +155,7 @@ if(array_key_exists("detailzoom", $_POST)) { $udetailzoom = $_POST["detailzoom"]
 Your e-mail (optional):<br/>
 <input type="text" name="email" /-->
 <img src="gd.php" id="captcha" alt="Capcha, sorry, you need to write this text to the box below." title="Can't read? Start to render and you'll get a new code! Write this code to the box below." /><br/>
-<input name="render" type="submit" value="Start to render" title="This submits your selected area to a custom crafted OSM to PNG converter that will generate a printer friendly HTML output."/> |
+<input id="submit" name="render" type="submit" value="Start to render" title="This submits your selected area to a custom crafted OSM to PNG converter that will generate a printer friendly HTML output."/> |
 <a id="permalink" href="<?php echo($map->getLink("")); ?>" title="Store the link from the URL bar for later. Remembers selection, but not the paper settings.">Permalink</a></p>
 </form>
 
@@ -171,6 +171,7 @@ Job ID: <input type="text" name="jobid" value="<?php echo((isset($jobid) && $job
 <script type="text/javascript">
 // Values from PHP
 var MAX_SQUARE_KM = <?php echo($map->MAX_SQUARE_KM); ?>;
+var MAX_OBJ_PER_PAGE = <?php echo($map->MAX_OBJ_PER_PAGE); ?>;
 
 $(document).ready(function () {
 
@@ -184,7 +185,6 @@ $(document).ready(function () {
 
 	if(lat1 && lon1 && lat2 && lon2) {
 		reselect(lat1, lon1, lat2, lon2);
-		showBoxSelectionInfo(lat1, lon1, lat2, lon2);
 	}
 });
 </script>

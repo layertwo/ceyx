@@ -2,6 +2,8 @@ var R = 6378100; /* Earth radius */
 
 var BOXWIDTH = 0; /* Selection width and height if any. Updated by showBoxSelectionInfo() call */
 var BOXHEIGHT = 0;
+var OBJECTCOUNT = 0; /* OSM elements within the selected area */
+var OVERPASSURL = "https://lz4.overpass-api.de/api/interpreter";
 
 function log(str) {
 	if(console && console.log) {
@@ -178,6 +180,7 @@ function storeSelection(lat1, lon1, lat2, lon2) {
 function showBoxSelectionInfo(lat1, lon1, lat2, lon2) {
 	BOXHEIGHT = latDistance(lat1, lat2);
 	BOXWIDTH = lonDistance(lon1, lon2);
+	OBJECTCOUNT = 0;
 	var square_km = Math.round((BOXHEIGHT/1000) * (BOXWIDTH/1000),1);
 	var pages = $("#pagesselect").val().split("x");
 	pages = parseInt(pages[0]) * parseInt(pages[1]);
@@ -188,6 +191,33 @@ function showBoxSelectionInfo(lat1, lon1, lat2, lon2) {
 			+ Math.round(BOXHEIGHT/100)/10 + " km." +
 			(square_km < MAX_SQUARE_KM && square_km / pages > 1 ? " <span class=\"error\">Selection might be too big for usable print result (detail survey!) or needs more pages.</span>" : "") +
 			(square_km > MAX_SQUARE_KM ? " <span class=\"error\">Bigger than allowed " + MAX_SQUARE_KM + " square kilometers.</span>" : ""));
+	var bbox = lat1 + "," + lon1 + "," + lat2 + "," + lon2;
+
+	// Query number of OSM elements in the selected area
+	$.ajax(OVERPASSURL, {
+			data: { data: "[out:json][timeout:25];(node(" + bbox + ");way(" + bbox + ");relation(" + bbox + "););out count;>;out count;" },
+			success: function(res, textStatus, jqXHR) {
+				var elems = 0;
+				// Parse "count" result from Overpass API
+				if(res.elements && res.elements.length > 0) {
+					for(var i = 0; i < res.elements.length; i++) {
+						if(res.elements[i].tags) {
+							elems += Number(res.elements[i].tags.total);
+						}
+					}
+				}
+				log(elems);
+				OBJECTCOUNT = elems;
+				if(OBJECTCOUNT/pages > MAX_OBJ_PER_PAGE) {
+				$("#clientinfo").append("<p class=\"error\">Selected " + OBJECTCOUNT + " OSM objects" 
+					+ ". Please select smaller area or more papers. Maximum: " 
+					+ MAX_OBJ_PER_PAGE + " objects per page.</p>");
+					$("#submit").prop("disabled", true);
+				} else {
+					$("#submit").prop("disabled", false)
+				}
+			}
+		});
 }
 
 
@@ -198,7 +228,6 @@ function deleteSelection() {
 function centerSelection() {
 	var f = vectors.features[0];
 	var center = f.geometry.getCentroid();
-	console.log(center);
 	var lonLat = center.transform(map.displayProjection, map.projection);
 	map.moveTo(center); // FIXME
 }
