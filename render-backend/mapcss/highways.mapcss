@@ -1,10 +1,11 @@
 /* Highways */
 way [highway]::centerline {
-	z-index: 0; 
+	z-index: 2; 
 	color:black;
 	linejoin: round;
 	linecap: round;
-	casing-width: 0.5;
+	casing-width: 2;
+	casing-color: #000;
 }
 way [highway]::label {
 	width: 0;
@@ -63,63 +64,67 @@ way|z-13 [highway=residential]::centerline {
 	color: #909090;
 	casing-color: #e6e6e6;
 }
-way|z14- [highway=unclassified]::centerline, 
-way|z14- [highway=residential]::centerline {
+way [highway=unclassified]::centerline,
+way [highway=residential]::centerline {
 	z-index: 0.1;
-	color: #FFF;
+	color: #fff;
 	casing-color: #909090;
 }
-way|z12- [highway=track]::centerline {
+way [highway=track]::centerline {
 	z-index: 0.0;
-	color: #d79331;
-	casing-color: #fff2de;
+	color: #af7728;
 	dashes: 3,3;
 }
-way|z13- [highway=service]::centerline {
+way [highway=service]::centerline {
 	z-index: 0;
 	color: #f3f3f3;
 	casing-color: #909090;
 }
-way|z14- [highway=cycleway]::centerline,
-way|z14- [highway=path][bicycle=designated]::centerline {
+way [highway=cycleway]::centerline,
+way [highway=path][bicycle=designated]::centerline {
 	z-index: 0.5;
-	color: #d1fad1;
-	casing-color: #707070;
-	casing-dashes: 1,2;
+	color: #0909ff;
 }
-way|z15- [highway=pedestrian]::centerline,
-way|z15- [highway=footway]::centerline {
+way [highway=pedestrian]::centerline {
 	color: #e5e0c2;
 	casing-color: #707070;
 }
-way|z15- [highway=steps]::centerline {
-	color: #e5e0c2;
-	casing-color: #707070;
+way [highway=footway]::centerline {
+	color: #000;
 }
-/*TODO: need to adapt path color and casing */
-way|z15- [highway=path][!bicycle=designated]::centerline {
-	color: #e5e0c2;
-	casing-color: #707070;
+way [highway=steps]::centerline {
+	color: #000;
+	dashes: 1,4;
+	casing-width: 0;
+}
+way [highway=path][!bicycle=designated]::centerline {
+	color: #005b00;
 }
 
 /* highways default width*/
-way|z15- [highway=pedestrian] {
+way [highway=motorway],
+way [highway=trunk] {width: 6.5;}
+way [highway=motorway_link],
+way [highway=trunk_link] {width: 3.5;}
+way [highway=primary] {width: 4.5;}
+way [highway=primary_link] {width: 2;}
+way [highway=secondary] {width: 3;}
+way [highway=tertiary] {width: 3;}
+way [highway=unclassified] {width: 3;}
+way [highway=residential] {width: 3;}
+way [highway=track] {width:3;}
+way [highway=service] {width: 8;}
+way [highway=cycleway],
+way [highway=path][bicycle=designated] {width: 3;}
+way [highway=footway] {width: 2;}
+way [highway=path][!bicycle=designated] {width: 2;}
+
+way [highway=pedestrian] {
 	width: 2;
 	casing-width: 0.5;
 }
-way|z15- [highway=footway] {
-	width:1;
-	casing-width: 0.6;
-}
-way|z15- [highway=steps] {
+way [highway=steps] {
 	width: 2;
-	casing-width: 0.01;
-	dashes: 3,3;
-}
-way|z15- [highway=path][!bicycle=designated] {
-	width:1;
-	casing-width: 0.6;
-	dashes: 4,4;
 }
 
 /* Highway tunnels */
@@ -171,17 +176,12 @@ way|z14- [highway=footway] {width: 2;}
 way|z14- [highway=path][!bicycle=designated] {width: 2;}
 
 /* Way labels */
-way|z14- [highway]::label {
+way [highway]::label {
     font-size: 12; 
 	text: name;
 	fill-opacity: 0;
 }
 
-way [highway]::centerline {
-    z-index: 2;
-	casing-width: 2;
-	casing-color: #000000;
-}
 way [bridge=1][highway]::centerline {
 	casing-width: 5;
 }
@@ -189,16 +189,10 @@ way [bridge=1][highway]::centerline {
 /* No casing for dashed ways */
 way [highway=track]::centerline,
 way [highway=footway]::centerline,
+way [highway=cycleway]::centerline,
+way [highway=path][bicycle=designated]::centerline,
 way [highway=path][!bicycle=designated]::centerline {
 	dashes: 10,10;
 	casing-width: 0;
 }
-
-/* Way colors */
-way [highway=track]::centerline {color: #af7728;}
-way [highway=footway]::centerline {color: #000;}
-way [highway=path][!bicycle=designated]::centerline {color: #00a400;}
-
-/* Fonts for 300 DPI */ 
-way[highway]::label { font-size: 12; }
 
