@@ -49,3 +49,5 @@ node|z14- [wheelchair]::label,
 way|z14-:closed [wheelchair]::label {
 	text-offset: -23; /* For bigger icons */
 }
+
+@import url("highways.mapcss");

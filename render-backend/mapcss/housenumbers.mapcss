@@ -48,3 +48,5 @@ node|z15-[emergency][!addr:housenumber]::icon {
 }
 node|z15- [barrier][!addr:housenumber] { icon-image: icons/sjjb/x16.png; }
 node|z15-[public_transport=stop_position][!addr:housenumber]::icon { icon-image: icons/sjjb/dot8.png; }
+
+@import url("highways.mapcss");

@@ -31,3 +31,4 @@ way|z15- [addr:interpolation]::housenumber {
 
 @import url("poi-labels.mapcss");
 @import url("poi-icons.mapcss");
+@import url("highways.mapcss");
