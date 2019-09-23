@@ -51,10 +51,10 @@ node|z13- [place] { font-size: 18; }
 
 /* Misc */
 node|z15- [natural=tree] { icon-image: icons/mapnik/tree2.png; }
-way|z14- [leisure=pitch] { fill-color: #1ed01e; }
+way|z14- [leisure=pitch] { fill-color: #acf3ac; }
 way|z14- [landuse=cemetery] { fill-image: icons/sjjb/cemetary.png; color: black; width: 1; fill-color: none; }
-way|z14- [leisure=playground] { fill-color: #eefa64; }
-way|z14- [leisure=park] { fill-color: #8cbe80; fill-opacity: 0.2;}
+way|z14- [leisure=playground] { fill-color: #eff6a5; }
+way|z14- [leisure=park] { fill-color: #aef09f; fill-opacity: 0.2;}
 
 /* Z-Index only */
 way|z14-:closed [leisure=park] { z-index: -0.8; }

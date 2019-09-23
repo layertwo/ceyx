@@ -55,7 +55,8 @@ node|z15- [amenity=fountain][!name]::label,
 node|z15- [public_transport=stop_position][!name]::label,
 node|z15- [highway=crossing][!name]::label,
 node|z15- [highway=traffic_signals][!name]::label,
-node|z15- [emergency=fire_hydrant][!name]::label {
+node|z15- [highway=give_way][!name]::label,
+node|z15- [emergency=fire_hydrant][!name][!ref]::label {
 	text: none;
 }
 
@@ -192,7 +193,10 @@ node|z14- [emergency=fire_hydrant]::icon { icon-image: icons/sjjb/fire_hydrant_f
 node|z14- [public_transport=stop_position]::icon { icon-image: icons/sjjb/dot8.png; }
 node|z14- [public_transport=platform]::icon { icon-image: icons/sjjb/transport_bus_stop.p.0092DA.24.png; }
 node|z14- [highway=bus_stop]::icon { icon-image: icons/sjjb/transport_bus_stop.p.0092DA.24.png; }
+
+/* Highway features */
 node|z14- [highway=crossing]::icon { icon-image: icons/sjjb/zebra_crossing_feri.png; }
+node|z14- [highway=give_way]::icon {z-index:6; icon-image: icons/sjjb/give_way_feri.png;}
 
 /* Barriers - nodes default to an "x" */
 node|z14- [barrier] { icon-image: icons/sjjb/x16.png; }

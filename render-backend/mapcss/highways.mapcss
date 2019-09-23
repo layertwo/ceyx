@@ -5,70 +5,65 @@ way [highway]::centerline {
 	linejoin: round;
 	linecap: round;
 	casing-width: 2;
-	casing-color: #000;
+	casing-color: #202020;
 }
 way [highway]::label {
 	width: 0;
 	fill-opacity: 0;
 	z-index: 5;
 	text-color: #000000;
-	font-size: 7;
+	font-size: 15;
 	text-halo-radius: 1.5;
 	text-position: line;
+	text: name;
 }
 
 /* Highway colors */
 way [highway=motorway]::centerline {
 	z-index: 0.5;
 	color: #e892a2;
-	casing-color: #202020;
 }
 way [highway=motorway_link]::centerline {
 	z-index: 0;
 	color: #e892a2;
-	casing-color: #202020;
 }
 way [highway=trunk]::centerline {
 	z-index: 0.5;
 	color: #f9b29c;
-	casing-color: #202020;
 }
 way [highway=trunk_link]::centerline {
 	z-index: 0;
 	color: #f9b29c;
-	casing-color: #202020;
 }
 way [highway=primary]::centerline {
 	z-index: 0.4;
 	color: #fcd6a4;
-	casing-color: #202020;
 }
 way [highway=primary_link]::centerline {
 	z-index: 0;
 	color: #fcd6a4;
-	casing-color: #202020;
 }
 way [highway=secondary]::centerline {
 	z-index:0.3;
 	color: #f7fabf;
-	casing-color: #202020;
 }
 way [highway=tertiary]::centerline {
 	z-index: 0.2;
 	color: #fff;
-	casing-color: #202020;
 }
 /* in low zoom, draw unclassified, residential just as gray lines*/
 way|z-13 [highway=unclassified]::centerline,
 way|z-13 [highway=residential]::centerline {
 	color: #909090;
-	casing-color: #e6e6e6;
 }
-way [highway=unclassified]::centerline,
-way [highway=residential]::centerline {
+way [highway=unclassified]::centerline {
 	z-index: 0.1;
 	color: #fff;
 	casing-color: #909090;
+}
+way [highway=residential]::centerline {
+	z-index: 0.1;
+	color: #fff;
 }
 way [highway=track]::centerline {
 	z-index: 0.0;
@@ -86,15 +81,15 @@ way [highway=path][bicycle=designated]::centerline {
 	color: #0909ff;
 }
 way [highway=pedestrian]::centerline {
-	color: #e5e0c2;
-	casing-color: #707070;
+	color: #f0f0f0;
+	casing-color: #909090;
 }
 way [highway=footway]::centerline {
 	color: #000;
 }
 way [highway=steps]::centerline {
 	color: #000;
-	dashes: 1,4;
+	dashes: 1,8;
 	casing-width: 0;
 }
 way [highway=path][!bicycle=designated]::centerline {
@@ -119,10 +114,6 @@ way [highway=path][bicycle=designated] {width: 3;}
 way [highway=footway] {width: 2;}
 way [highway=path][!bicycle=designated] {width: 2;}
 
-way [highway=pedestrian] {
-	width: 2;
-	casing-width: 0.5;
-}
 way [highway=steps] {
 	width: 2;
 }
@@ -135,6 +126,7 @@ way [tunnel=1][highway]::centerline {
 }
 
 /* Street names */
+/*
 way|z12-13 [highway=primary]::label,
 way|z12-13 [highway=secondary]::label, 
 way|z13-14 [highway=tertiary]::label,
@@ -155,7 +147,7 @@ way|z15- [highway=footway]::label,
 way|z15- [highway=pedestrian]::label {
 	font-size: 12;
 	text: name;
-}
+}*/
 
 
 /* highways - much wider for print */
@@ -163,27 +155,28 @@ way|z14- [highway=motorway],
 way|z14- [highway=trunk] {width: 28;}
 way|z14- [highway=motorway_link],
 way|z14- [highway=trunk_link] {width: 14;}
-way|z14- [highway=primary] {width: 24;}
+way|z14- [highway=primary] {width: 25;}
 way|z14- [highway=primary_link] {width: 12;}
-way|z14- [highway=secondary] {width: 20;}
-way|z14- [highway=tertiary] {width: 19;}
+way|z14- [highway=secondary] {width: 22;}
+way|z14- [highway=tertiary] {width: 22;}
 way|z14- [highway=unclassified] {width: 18;}
 way|z14- [highway=residential] {width: 18;}
+way|z14- [highway=pedestrian] {width: 18;}
 way|z14- [highway=track] {width:3;}
 way|z14- [highway=service] {width: 8;}
 way|z14- [highway=cycleway], way|z14- [highway=path][bicycle=designated] {width: 3;}
 way|z14- [highway=footway] {width: 2;}
 way|z14- [highway=path][!bicycle=designated] {width: 2;}
 
-/* Way labels */
-way [highway]::label {
-    font-size: 12; 
-	text: name;
-	fill-opacity: 0;
-}
 
 way [bridge=1][highway]::centerline {
 	casing-width: 5;
+}
+way [oneway=1][highway]::markerline {
+	width: 1;
+	color: #000;
+	dashes: 2,20;
+	z-index: 5;
 }
 
 /* No casing for dashed ways */

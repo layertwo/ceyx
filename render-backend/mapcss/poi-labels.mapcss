@@ -129,10 +129,14 @@ way|z15-[emergency][!name]::label {
 
 /* IMPORTANT: poi-icons.mapcss hides these "noname-labels" when icon is obvious! */
 
-/* Operator as label */
+/* Operator or Ref as label */
 node|z15-[operator][!name]::label,
 way|z15-[operator][!name]::label {
 	text: operator;
+}
+node|z15-[ref][!name][!operator]::label,
+way|z15-[ref][!name][!operator]::label {
+	text: ref;
 }
 
 /* "information" as label */
