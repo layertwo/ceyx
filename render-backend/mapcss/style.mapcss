@@ -6,10 +6,6 @@
    16: full detail
 */
 
-canvas {
-	fill-color: #f8f8f8; fill-opacity: 1.0;
-}
-
 /* Default font for all elements*/
 way,node {
 	font-family: DejaVu;
@@ -23,11 +19,6 @@ way {
 	text-position: center;
 }
 
-/* Render all ways only in z17-19 (mostly for debugging) */
-way|z17-19 {
-	color:black;
-	width:2;
-}
 
 /*Render all closed ways area somehow (if not a highway)*/
 way:closed [!highway] {
@@ -50,7 +41,7 @@ way|z12-[leisure] {
 	z-index: -0.8;       /* Put leisure on top of landuse */
 	fill-color: #808000; /*Olive color*/
 	fill-opacity: 1.0;
-	width: 0.6;
+	width: 0.4;
 	font-size: 9;
 	text-color: darkbrown;
 }
@@ -66,14 +57,6 @@ way|z13- [leisure=pitch]::area {
 }
 way|z12-:closed [leisure=~park|garden|golf_course|common|green]::area {
 	fill-color: none; color: #6fc18e;
-}
-way|z12-13[landuse=cemetery] {
-	fill-color: #c7f1a3;
-	color: #000;
-}
-way|z14- [landuse=cemetery] {
-	fill-image: icons/cemetary.png;
-	color: #000;
 }
 way|z12- [landuse=~/field|farm|farmland|meadow|grass|vineyard/] {
 	width: 0.6;
@@ -108,22 +91,6 @@ way|z14-:closed [building]::area {
 	color: #6a5a8e;
 	fill-opacity: 1.0;
 	width: 0.5;
-}
-way|z16-:closed [addr:housenumber]::housenumber {
-	z-index: 0;
-	width: 0;
-	fill-opacity: 0;
-	font-size: 6;
-	text-color: #fff;
-	text-halo-color: #000;
-	text-halo-radius: 0.5;
-	text: addr:housenumber;
-}
-way|z17-:closed [addr:housenumber]::housenumber {
-	font-weight: 600;
-	text-halo-radius: 0.5;
-	text-halo-color: #000;
-	font-size: 7;
 }
 
 way [natural]  {
@@ -277,11 +244,6 @@ node|z16- [power=tower] {
 }
 
 /* Amenities */
-/*node|z12- [highway=bus_stop] {
-	z-index:1;
-	color: darkgray;
-	width:1;
-}*/
 node|z15- [highway=bus_stop]::label {
 	max-width: 100;
 }
@@ -290,8 +252,6 @@ node|z15- [highway=bus_stop]::icon {
 	icon-image: icons/bus.png;
 }
 
-node|z14- [amenity=place_of_worship]::icon {z-index:6; icon-image: icons/church.png; max-width: 500;}
-node|z15- [amenity=place_of_worship]::icon {font-size: 8; text-offset: 8; text-alignment: top; text:name;}
 
 node|z16- [amenity=fountain] {z-index:1; color: #b5d6f1; width:5; casing-color: black; casing-width: 1;}
 node|z16- [amenity=fountain] {z-index:2; width:2; color: black; casing-width: 0;}
@@ -386,7 +346,6 @@ text-color: #32CD32;
 node|z16- [amenity=atm]::icon { icon-image: icons/atm.png; }
 
 node|z16- [highway=bus_stop]::icon {z-index:6; icon-image: icons/bus.png;}
-node|z14- [amenity=place_of_worship]::icon { icon-image: icons/church.png; }
 
 /*Default tourism information icon to be overridden by specific icons*/
 node|z15- [tourism=information]::icon { icon-image: icons/information.png; }
@@ -398,7 +357,6 @@ node|z15- [shop=bakery]::icon {icon-image: icons/bakery.png;}
 node|z15- [shop=supermarket]::icon {icon-image: icons/supermarket.png;}
 
 node|z15-[amenity=parking]::icon, way|z15-[amenity=parking]::icon { icon-image: icons/parking.png;}
-node|z15-[amenity=parking]::label, way|z15-[amenity=parking]::label { text-color: blue; text:name;}
 node|z15- [highway=traffic_signals]::icon {z-index:6; icon-image: icons/traffic_signal.png;}
 
 node|z16- [amenity=fountain]::bottom {z-index:1; color: #b5d6f1; width:5; casing-color: black; casing-width: 1;}

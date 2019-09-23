@@ -64,6 +64,7 @@ way|z14-:closed[public_transport]::label,
 way|z14-:closed[emergency]::label {
 	text-position: center;
 	text-offset: -18;
+    text: name;
 	z-index: 6;
 	fill-opacity:0;
 }

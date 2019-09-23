@@ -1,6 +1,11 @@
-/* Render all ways. Orig: z17-z19 only */
-way|z14- { color:black; width: 2; }
-canvas { fill-color: #ffffff; }
+/* Render all ways. */
+way|z14- {
+	color:black; width: 2;
+}
+canvas {
+	fill-color: #ffffff;
+	fill-opacity: 1.0;
+}
 
 /* POI related area defaults (POI LIST COPY) */
 way|z14-:closed[tourism], 
@@ -52,7 +57,7 @@ node|z13- [place] { font-size: 18; }
 /* Misc */
 node|z15- [natural=tree] { icon-image: icons/mapnik/tree2.png; }
 way|z14- [leisure=pitch] { fill-color: #acf3ac; }
-way|z14- [landuse=cemetery] { fill-image: icons/sjjb/cemetary.png; color: black; width: 1; fill-color: none; }
+way|z13- [landuse=cemetery] { color: black; width: 1; fill-color: #efefef; }
 way|z14- [leisure=playground] { fill-color: #eff6a5; }
 way|z14- [leisure=park] { fill-color: #aef09f; fill-opacity: 0.2;}
 

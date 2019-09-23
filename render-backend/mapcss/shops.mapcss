@@ -1,11 +1,6 @@
 @import url("style.mapcss");
 @import url("printer.mapcss");
 
-/* FIXME: must remove orignal rules
-   way|z16-:closed [addr:housenumber]::housenumber  {
-   and
-   way|z17-:closed [addr:housenumber]::housenumber {
-*/
 /* Show housenumber unless this is a POI (POI LIST COPY) */
 node|z15- [addr:housenumber][!highway][!tourism][!amenity][!shop][!craft][!leisure][!gambling][!office][!man_made][!historic][!public_transport][!railway][!emergency]::housenumber,
 way|z15-:closed [addr:housenumber][!highway][!tourism][!amenity][!shop][!craft][!leisure][!gambling][!office][!man_made][!historic][!railway][!public_transport][!emergency]::housenumber {
