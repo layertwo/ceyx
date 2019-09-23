@@ -96,92 +96,168 @@ node|z15-[abandoned:emergency]::icon {
 }
 
 /* Amenity icons */
+way|z14-:closed [amenity=restaurant]::icon,
 node|z14- [amenity=restaurant]::icon { icon-image: icons/sjjb/food_restaurant.p.000000.24.png; }
+way|z14-:closed [amenity=restaurant][cuisine=pizza]::icon,
 node|z14- [amenity=restaurant][cuisine=pizza]::icon { icon-image: icons/sjjb/food_pizza.p.000000.24.png; }
+way|z14-:closed [amenity=fast_food]::icon,
 node|z14- [amenity=fast_food]::icon { icon-image: icons/sjjb/food_fastfood2.p.734A08.24.png; }
+way|z14-:closed [amenity=drinking_water]::icon,
 node|z14- [amenity=drinking_water]::icon { icon-image: icons/sjjb/food_drinkingtap.p.000000.24.png; }
+way|z14-:closed [amenity=pub]::icon,
 node|z14- [amenity=pub]::icon { icon-image: icons/sjjb/food_pub.p.734A08.24.png; }
+way|z14-:closed [amenity=bar]::icon,
 node|z14- [amenity=bar]::icon { icon-image: icons/sjjb/food_bar.p.000000.24.png; }
+way|z14-:closed [amenity=cafe]::icon,
 node|z14- [amenity=cafe]::icon { icon-image: icons/sjjb/food_cafe.p.000000.24.png; }
+way|z14-:closed [amenity=biergarten]::icon,
 node|z14- [amenity=biergarten]::icon { icon-image: icons/sjjb/food_biergarten.p.000000.24.png; }
+way|z14-:closed [amenity=ice_cream]::icon,
 node|z14- [amenity=ice_cream]::icon { icon-image: icons/sjjb/food_ice_cream.p.000000.24.png; }
+way|z14-:closed [amenity=kindergarten]::icon,
 node|z14- [amenity=kindergarten]::icon { icon-image: icons/sjjb/education_nursery.n.0092DA.24.png; }
+way|z14-:closed [amenity=school]::icon,
 node|z14- [amenity=school]::icon { icon-image: icons/sjjb/education_school.p.000000.24.png; }
+way|z14-:closed [amenity=college]::icon,
 node|z14- [amenity=college]::icon { icon-image: icons/sjjb/education_college_vocational.p.000000.24.png; }
+way|z14-:closed [amenity=library]::icon,
 node|z14- [amenity=library]::icon { icon-image: icons/sjjb/amenity_library.p.000000.24.png; }
+way|z14-:closed [amenity=university]::icon,
 node|z14- [amenity=university]::icon { icon-image: icons/sjjb/education_university.p.000000.24.png; }
+way|z14-:closed [amenity=bicycle_parking]::icon,
 node|z14- [amenity=bicycle_parking]::icon { icon-image: icons/sjjb/transport_parking_bicycle.p.0092DA.24.png; }
+way|z14-:closed [amenity=bicycle_rental]::icon,
 node|z14- [amenity=bicycle_rental]::icon { icon-image: icons/sjjb/transport_rental_bicycle.p.000000.24.png; }
+way|z14-:closed [amenity=bus_station]::icon,
 node|z14- [amenity=bus_station]::icon { icon-image: icons/sjjb/transport_bus_station.p.000000.24.png; }
+way|z14-:closed [amenity=car_rental]::icon,
 node|z14- [amenity=car_rental]::icon { icon-image: icons/sjjb/transport_rental_car.p.734A08.24.png; }
+way|z14-:closed [amenity=fuel]::icon,
 node|z14- [amenity=fuel]::icon { icon-image: icons/sjjb/transport_fuel.p.0092DA.24.png; }
+way|z14-:closed [amenity=parking]::icon,
 node|z14- [amenity=parking]::icon { icon-image: icons/sjjb/transport_parking.n.0092DA.24.png; }
+way|z14-:closed [amenity=taxi]::icon,
 node|z14- [amenity=taxi]::icon { icon-image: icons/sjjb/transport_taxi_rank.n.0092DA.24.png; }
+way|z14-:closed [amenity=atm]::icon,
 node|z14- [amenity=atm]::icon { icon-image: icons/sjjb/money_atm2.p.000000.24.png; }
+way|z14-:closed [amenity=bank]::icon,
 node|z14- [amenity=bank]::icon { icon-image: icons/sjjb/money_bank2.p.000000.24.png; }
+way|z14-:closed [amenity=bureau_de_change]::icon,
 node|z14- [amenity=bureau_de_change]::icon { icon-image: icons/sjjb/money_currency_exchange.p.000000.24.png; }
+way|z14-:closed [amenity=pharmacy]::icon,
 node|z14- [amenity=pharmacy]::icon { icon-image: icons/sjjb/health_pharmacy.p.39AC39.24.png; }
+way|z14-:closed [amenity=hospital]::icon,
 node|z14- [amenity=hospital]::icon { icon-image: icons/sjjb/health_hospital.p.DA0092.24.png; }
+way|z14-:closed [amenity=dentist]::icon,
 node|z14- [amenity=dentist]::icon { icon-image: icons/sjjb/health_dentist.n.0092DA.24.png; }
+way|z14-:closed [amenity=doctors]::icon,
 node|z14- [amenity=doctors]::icon { icon-image: icons/sjjb/health_doctors2.n.0092DA.24.png; }
+way|z14-:closed [amenity=veterinary]::icon,
 node|z14- [amenity=veterinary]::icon { icon-image: icons/sjjb/health_veterinary.n.0092DA.24.png; }
+way|z14-:closed [amenity=cinema]::icon,
 node|z14- [amenity=cinema]::icon { icon-image: icons/sjjb/tourist_cinema.p.000000.24.png; }
+way|z14-:closed [amenity=fountain]::icon,
 node|z14- [amenity=fountain]::icon { icon-image: icons/sjjb/amenity_fountain.p.0092DA.24.png; }
-way|z14- [amenity=theatre]::icon,
+way|z14-:closed [amenity=theatre]::icon,
 node|z14- [amenity=theatre]::icon { icon-image: icons/sjjb/tourist_theatre.p.000000.24.png; }
+way|z14-:closed [amenity=bench]::icon,
 node|z14- [amenity=bench]::icon { icon-image: icons/sjjb/amenity_bench.p.000000.24.png; }
+way|z14-:closed [amenity=clock]::icon,
 node|z14- [amenity=clock]::icon { icon-image: icons/sjjb/tourist_clock.p.000000.24.png; }
+way|z14-:closed [amenity=courthouse]::icon,
 node|z14- [amenity=courthouse]::icon { icon-image: icons/sjjb/amenity_court.p.000000.24.png; }
+way|z14-:closed [amenity=embassy]::icon,
 node|z14- [amenity=embassy]::icon { icon-image: icons/sjjb/poi_embassy2.n.000000.24.png; }
+way|z14-:closed [amenity=fire_station]::icon,
 node|z14- [amenity=fire_station]::icon { icon-image: icons/sjjb/amenity_firestation.n.DA0092.24.png; }
+way|z14-:closed [amenity=marketplace]::icon,
 node|z14- [amenity=marketplace]::icon { icon-image: icons/sjjb/shopping_marketplace.n.000000.24.png; }
+way|z14-:closed [amenity=place_of_worship]::icon,
 node|z14- [amenity=place_of_worship]::icon { icon-image: icons/sjjb/place_of_worship_christian.p.000000.24.png; }
+way|z14-:closed [amenity=police]::icon,
 node|z14- [amenity=police]::icon { icon-image: icons/sjjb/amenity_police.p.000000.24.png; }
+way|z14-:closed [amenity=post_box]::icon,
 node|z14- [amenity=post_box]::icon { icon-image: icons/sjjb/amenity_post_box.p.000000.24.png; }
+way|z14-:closed [amenity=post_office]::icon,
 node|z14- [amenity=post_office]::icon { icon-image: icons/sjjb/amenity_post_office.p.000000.24.png; }
+way|z14-:closed [amenity=recycling]::icon,
 node|z14- [amenity=recycling]::icon { icon-image: icons/sjjb/amenity_recycling.p.39AC39.24.png; }
+way|z14-:closed [amenity=shelter]::icon,
 node|z14- [amenity=shelter]::icon { icon-image: icons/sjjb/accommodation_shelter2.p.000000.24.png; }
+way|z14-:closed [amenity=telephone]::icon,
 node|z14- [amenity=telephone]::icon { icon-image: icons/sjjb/amenity_telephone.p.000000.24.png; }
+way|z14-:closed [amenity=toilets]::icon,
 node|z14- [amenity=toilets]::icon { icon-image: icons/sjjb/amenity_toilets.n.666666.24.png; }
+way|z14-:closed [amenity=townhall]::icon,
 node|z14- [amenity=townhall]::icon { icon-image: icons/sjjb/amenity_town_hall.p.000000.24.png; }
+way|z14-:closed [amenity=waste_basket]::icon,
 node|z14- [amenity=waste_basket]::icon { icon-image: icons/sjjb/amenity_waste_bin.p.000000.24.png; }
 
 /* Shop icons */
+way|z14-:closed [shop=alcohol]::icon,
 node|z14- [shop=alcohol]::icon { icon-image: icons/sjjb/shopping_alcohol.p.000000.24.png; }
+way|z14-:closed [shop=bakery]::icon,
 node|z14- [shop=bakery]::icon { icon-image: icons/sjjb/shopping_bakery.p.000000.24.png; }
+way|z14-:closed [shop=bicycle]::icon,
 node|z14- [shop=bicycle]::icon { icon-image: icons/sjjb/shopping_bicycle.p.000000.24.png; }
+way|z14-:closed [shop=butcher]::icon,
 node|z14- [shop=butcher]::icon { icon-image: icons/sjjb/shopping_butcher2.p.000000.24.png; }
+way|z14-:closed [shop=car]::icon,
 node|z14- [shop=car]::icon { icon-image: icons/sjjb/shopping_car.p.000000.24.png; }
+way|z14-:closed [shop=car_repair]::icon,
 node|z14- [shop=car_repair]::icon { icon-image: icons/sjjb/shopping_car_repair.p.000000.24.png; }
+way|z14-:closed [shop=clothes]::icon,
 node|z14- [shop=clothes]::icon { icon-image: icons/sjjb/shopping_clothes.p.000000.24.png; }
+way|z14-:closed [shop=computer]::icon,
 node|z14- [shop=computer]::icon { icon-image: icons/sjjb/shopping_computer.p.666666.24.png; }
+way|z14-:closed [shop=confectionery]::icon,
 node|z14- [shop=confectionery]::icon { icon-image: icons/sjjb/shopping_confectionery.p.000000.24.png; }
+way|z14-:closed [shop=convenience]::icon,
 node|z14- [shop=convenience]::icon { icon-image: icons/sjjb/shopping_convenience.p.AC39AC.24.png; }
+way|z14-:closed [shop=copyshop]::icon,
 node|z14- [shop=copyshop]::icon { icon-image: icons/sjjb/shopping_copyshop.n.000000.24.png; }
+way|z14-:closed [shop=doityourself]::icon,
 node|z14- [shop=doityourself]::icon { icon-image: icons/sjjb/shopping_diy.p.000000.24.png; }
+way|z14-:closed [shop=florist]::icon,
 node|z14- [shop=florist]::icon { icon-image: icons/sjjb/shopping_florist.p.AC39AC.24.png; }
+way|z14-:closed [shop=garden_centre]::icon,
 node|z14- [shop=garden_centre]::icon { icon-image: icons/sjjb/shopping_garden_centre.n.39AC39.24.png; }
+way|z14-:closed [shop=gift]::icon,
 node|z14- [shop=gift]::icon { icon-image: icons/sjjb/shopping_gift.p.AC39AC.24.png; }
+way|z14-:closed [shop=greengrocer]::icon,
 node|z14- [shop=greengrocer]::icon { icon-image: icons/sjjb/shopping_greengrocer.p.39AC39.24.png; }
+way|z14-:closed [shop=hairdresser]::icon,
 node|z14- [shop=hairdresser]::icon { icon-image: icons/sjjb/shopping_hairdresser.p.000000.24.png; }
+way|z14-:closed [shop=jewelry]::icon,
 node|z14- [shop=jewelry]::icon { icon-image: icons/sjjb/shopping_jewelry2.p.000000.24.png; }
+way|z14-:closed [shop=laundry]::icon,
 node|z14- [shop=laundry]::icon { icon-image: icons/sjjb/shopping_laundrette.p.000000.24.png; }
+way|z14-:closed [shop=mobile_phone]::icon,
 node|z14- [shop=mobile_phone]::icon { icon-image: icons/sjjb/shopping_mobile_phone.p.000000.24.png; }
+way|z14-:closed [shop=pet]::icon,
 node|z14- [shop=pet]::icon { icon-image: icons/sjjb/shopping_pet2.p.000000.24.png; }
+way|z14-:closed [shop=seafood]::icon,
 node|z14- [shop=seafood]::icon { icon-image: icons/sjjb/shopping_fish.p.0092DA.24.png; }
+way|z14-:closed [shop=supermarket]::icon,
 node|z14- [shop=supermarket]::icon { icon-image: icons/sjjb/shopping_supermarket.p.AC39AC.24.png; }
+way|z14-:closed [shop=tobacco]::icon,
 node|z14- [shop=tobacco]::icon { icon-image: icons/sjjb/shopping_tobacco.p.000000.24.png; }
+way|z14-:closed [shop=toys]::icon,
 node|z14- [shop=toys]::icon { icon-image: icons/sjjb/shopping_toys.p.000000.24.png; }
 
 /* Office icons */
+way|z14-:closed [office=estate_agent]::icon,
 node|z14- [office=estate_agent]::icon { icon-image: icons/sjjb/shopping_estateagent2.p.000000.24.png; }
 
 /* Leisure icons */
-node|z14- [leisure=playground]::icon, way|z14-:closed [leisure=playground]::icon { icon-image: icons/sjjb/amenity_playground.p.734A08.24.png; }
+node|z14- [leisure=playground]::icon,
+way|z14-:closed [leisure=playground]::icon { icon-image: icons/sjjb/amenity_playground.p.734A08.24.png; }
 
 /* Tourism icons */
-node|z14- [tourism=camp_site]::icon, way|z14-:closed [tourism=camp_site]::icon { icon-image: icons/sjjb/accommodation_camping.p.0092DA.24.png; }
-node|z14- [tourism=hotel]::icon, way|z14-:closed [tourism=hotel]::icon { icon-image: icons/sjjb/accommodation_hotel2.n.0092DA.24.png; }
+node|z14- [tourism=camp_site]::icon,
+way|z14-:closed [tourism=camp_site]::icon { icon-image: icons/sjjb/accommodation_camping.p.0092DA.24.png; }
+node|z14- [tourism=hotel]::icon,
+way|z14-:closed [tourism=hotel]::icon { icon-image: icons/sjjb/accommodation_hotel2.n.0092DA.24.png; }
 
 /* Man made */
 node|z14- [man_made=water_tower]::icon { icon-image: icons/sjjb/water_tower.p.000000.24.png; }
