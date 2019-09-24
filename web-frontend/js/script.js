@@ -195,7 +195,7 @@ function showBoxSelectionInfo(lat1, lon1, lat2, lon2) {
 
 	// Query number of OSM elements in the selected area
 	$.ajax(OVERPASSURL, {
-			data: { data: "[out:json][timeout:25];(node(" + bbox + ");way(" + bbox + ");relation(" + bbox + "););out count;>;out count;" },
+			data: { data: "[out:json][timeout:25];(node(" + bbox + "););out count;>;out count;" },
 			success: function(res, textStatus, jqXHR) {
 				var elems = 0;
 				// Parse "count" result from Overpass API
@@ -209,9 +209,9 @@ function showBoxSelectionInfo(lat1, lon1, lat2, lon2) {
 				log(elems);
 				OBJECTCOUNT = elems;
 				if(OBJECTCOUNT/pages > MAX_OBJ_PER_PAGE) {
-				$("#clientinfo").append("<p class=\"error\">Selected " + OBJECTCOUNT + " OSM objects" 
+				$("#clientinfo").append("<p class=\"error\">Selected " + OBJECTCOUNT + " OSM nodes" 
 					+ ". Please select smaller area or more papers. Maximum: " 
-					+ MAX_OBJ_PER_PAGE + " objects per page.</p>");
+					+ MAX_OBJ_PER_PAGE + " nodes per page.</p>");
 					$("#submit").prop("disabled", true);
 				} else {
 					$("#submit").prop("disabled", false)
