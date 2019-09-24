@@ -98,7 +98,7 @@ way [natural]  {
 	fill-opacity: 1.0;
 }
 way [natural=water]::area  {
-	z-index: -0.1;
+	z-index: -0.2;
 	fill-color: #b5d6f1;
 	color: #b0b0b0;
 	width: 0.3;
@@ -301,48 +301,6 @@ way[amenity]::icon {
 	width: 0;
 	fill-opacity: 0;
 }
-/*
-node[tourism]::label, node [amenity]::label,
-way[tourism]::label, way [amenity]::label {
-z-index: 6;
-width: 0;
-text-halo-radius: 2;
-fill-opacity: 0;
-font-size: 7;
-text-alignment: top;
-text-offset: 11;
-max-width: 100;
-}
-
-node|z16-[tourism]::label, node|z16-[amenity]::label,
-way|z16-[tourism]::label, way|z16-[amenity]::label {
-text: name;}
-
-way:closed[amenity=theatre]::area {
-z-index: -0.1;
-fill-color: #9A519E;
-fill-opacity: 1.0;
-}
-
-node|z15- [amenity=theatre]::label, way|z15- [amenity=theatre]::label {
-text-offset: 9;
-icon-image: icons/theatre.png;
-}
-
-node|z15- [amenity=hospital]::label, way|z15- [amenity=hospital]::label {
-icon-image: icons/hospital.png;
-font-size: 8;
-text-halo-color: #666;
-text-color: red;
-}
-
-node|z16- [amenity=pharmacy]::label, way|z16- [amenity=pharmacy]::label {
-icon-image: icons/pharmacy.png;
-font-size: 8;
-text-halo-color: #666;
-text-color: #32CD32;
-}
-*/
 node|z16- [amenity=atm]::icon { icon-image: icons/atm.png; }
 
 node|z16- [highway=bus_stop]::icon {z-index:6; icon-image: icons/bus.png;}

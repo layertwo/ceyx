@@ -43,10 +43,10 @@ Z-INDEX MAP
    0: way [railway] 
    0: way :closed [aeroway=aerodrome]::area 
 -0.1: way|z14-:closed [building]::area
--0.1: way [natural=water]::area 
 -0.1: way|z14-  [amenity=parking]::area
 -0.1: way:closed[amenity=theatre]::area
 -0.2: way [waterway] 
+-0.2: way [natural=water]::area 
 -0.5: way [natural] 
 -0.5: way [natural=wetland] 
 -0.8: way|z12-[leisure]
