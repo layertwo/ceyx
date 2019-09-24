@@ -30,7 +30,7 @@ class MapSettings {
 	public $PAGES_H_MAX = 3; /*< Maximum 3x3 pages for box */
 	public $BBOX_EDGE = 0.003; /*< Increase download area by this degree in all directions */
 	public $MAX_SQUARE_KM = 18; /*< Maximum allowed rendered area */
-	public $MAX_OBJ_PER_PAGE = 5000; /*< Maximum OSM elements on a page */
+	public $MAX_OBJ_PER_PAGE = 2000; /*< Maximum OSM nodes on a page */
 	public $SITEURL = "http://render.osmtippek.hu/";
 
 	public $PAPERSIZES = array("a4p", "a4l", "letterp", "letterl");
