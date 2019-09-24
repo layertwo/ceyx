@@ -422,6 +422,7 @@ function goCreateMode() {
 		vectors.removeAllFeatures();
 		controls.modify.deactivate();
 		controls.regular.activate();
+		$("#map").css("cursor", "crosshair");
 	}
 }
 
@@ -437,6 +438,7 @@ function report(event) {
 	// On finished drawing selection or modifying selection
 	// "sketchcomplete" and "featuremodified"
 	if(event.feature) {
+		$("#map").css("cursor", "");
 		var b = new OpenLayers.Bounds(event.feature.geometry.getBounds().toArray());
 		b.transform(map.projection, "EPSG:4326");
 		storeSelection(roundNumber(b.bottom, 6), roundNumber(b.left, 6), roundNumber(b.top, 6), roundNumber(b.right, 6));
