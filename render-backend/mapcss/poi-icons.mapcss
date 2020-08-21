@@ -53,10 +53,12 @@ node|z15- [amenity=restaurant][!name]::label,
 node|z15- [amenity=drinking_water][!name]::label,
 node|z15- [amenity=fountain][!name]::label,
 node|z15- [amenity=parking][!name]::label,
+node|z15- [amenity=waste_basket][!name]::label,
 node|z15- [public_transport=stop_position][!name]::label,
 node|z15- [highway=crossing][!name]::label,
 node|z15- [highway=traffic_signals][!name]::label,
 node|z15- [highway=give_way][!name]::label,
+node|z15- [highway=street_lamp][!name]::label,
 node|z15- [emergency=fire_hydrant][!name][!ref]::label {
 	text: none;
 }
@@ -172,8 +174,8 @@ way|z14-:closed [amenity=fire_station]::icon,
 node|z14- [amenity=fire_station]::icon { icon-image: icons/sjjb/amenity_firestation.n.DA0092.24.png; }
 way|z14-:closed [amenity=marketplace]::icon,
 node|z14- [amenity=marketplace]::icon { icon-image: icons/sjjb/shopping_marketplace.n.000000.24.png; }
-way|z14-:closed [amenity=place_of_worship]::icon,
-node|z14- [amenity=place_of_worship]::icon { icon-image: icons/sjjb/place_of_worship_christian.p.000000.24.png; }
+way|z14-:closed [amenity=place_of_worship][religion=christian]::icon,
+node|z14- [amenity=place_of_worship][religion=christian]::icon { icon-image: icons/sjjb/place_of_worship_christian.p.000000.24.png; }
 way|z14-:closed [amenity=police]::icon,
 node|z14- [amenity=police]::icon { icon-image: icons/sjjb/amenity_police.p.000000.24.png; }
 way|z14-:closed [amenity=post_box]::icon,
@@ -274,6 +276,7 @@ node|z14- [highway=bus_stop]::icon { icon-image: icons/sjjb/transport_bus_stop.p
 /* Highway features */
 node|z14- [highway=crossing]::icon { icon-image: icons/sjjb/zebra_crossing_feri.png; }
 node|z14- [highway=give_way]::icon {z-index:6; icon-image: icons/sjjb/give_way_feri.png;}
+node|z14- [highway=street_lamp]::icon {z-index:6; icon-image: icons/sjjb/lamp_feri.png;}
 
 /* Barriers - nodes default to an "x" */
 node|z14- [barrier] { icon-image: icons/sjjb/x16.png; }

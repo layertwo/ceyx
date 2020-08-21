@@ -60,6 +60,7 @@ way|z14- [leisure=pitch] { fill-color: #acf3ac; }
 way|z13- [landuse=cemetery] { color: black; width: 1; fill-color: #efefef; }
 way|z14- [leisure=playground] { fill-color: #eff6a5; }
 way|z14- [leisure=park] { fill-color: #aef09f; fill-opacity: 0.2;}
+way|z14- [barrier=fence] { color: #888; width: 1; }
 
 /* Z-Index only */
 way|z14-:closed [leisure=park] { z-index: -0.8; }
