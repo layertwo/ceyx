@@ -28,7 +28,7 @@ class MapSettings {
 	public $DETAIL_MAX_ZOOM = 17; /*< Min zoom level from the detail dropdown */ 
 	public $PAGES_W_MAX = 3; /*< Maximum 3x3 pages for box */
 	public $PAGES_H_MAX = 3; /*< Maximum 3x3 pages for box */
-	public $BBOX_EDGE = 0.003; /*< Increase download area by this degree in all directions */
+	public $BBOX_EDGE = 0.000; /*< Increase download area by this degree in all directions (not necessary since using OverPass) */
 	public $MAX_SQUARE_KM = 18; /*< Maximum allowed rendered area */
 	public $MAX_OBJ_PER_PAGE = 2000; /*< Maximum OSM nodes on a page */
 	public $SITEURL = "http://render.osmtippek.hu/";
