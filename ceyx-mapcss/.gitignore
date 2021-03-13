@@ -1,0 +1,6 @@
+\#$
+\~$
+\.pyc$
+^map..\.png$
+^cache/
+\.orig$

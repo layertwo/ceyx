@@ -1,0 +1,39 @@
+CEYX README
+===========
+
+Ceyx is a python module that provides a .osm parser, a .mapcss parser,
+and a Renderer for outputting .png files. 
+
+Features
+--------
+
+System Requirements
+-------------------
+- Python >=2.5
+- python-cairo
+- pangocairo
+
+License
+------- 
+Ceyx is licensed under the GNU GPL v2+ license unless specific bits
+and pieces in the code say otherwise (they would be compatible, of course).
+
+Howto use
+---------
+
+FAQ
+---
+*  What does Ceyx mean? 
+
+    The first mapcss implementation is called halcyon. Now, let me
+    quote wikipedia on Ceyx::
+
+      In Greek mythology Ceyx (Ancient Greek: Κήϋξ Kēüx; English
+      pronunciation: /ˈsiː.ɪks/) was the son of Eosphorus and the king
+      of Thessaly. He was married to Halcyone. They were very happy
+      together, and according to Pseudo-Apollodorus's account, often
+      called each other "Zeus" and "Hera".
+
+    If that doesn't impress you a lot, then you just assume that the
+    name has been chosen because both halcyon and ceyx are kingfisher
+    birds. Pythons happen to love kingfishers :-).

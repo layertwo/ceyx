@@ -1,0 +1,23 @@
+STYLES
+======
+
+-Parse :area
+-Parse nested rules
+
+Renderer
+========
+
+Honor:
+opacity
+dashes
+linecap
+linejoin
+fill-color
+fill-opacity
+fill-image
+casing-width
+casing-color
+casing-opacity
+casing-dashes
+casing-linecap
+casing-linejoin 
