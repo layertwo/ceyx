@@ -448,8 +448,8 @@ class Textrenderer(object):
 
         if ele.tag == 'way':
             fillx1,filly1,fillx2,filly2 = ctx.path_extents()
-            if (fillx2-fillx1) < (extents[2]-extents[0]):
-                return False
+        #    if (fillx2-fillx1) < (extents[2]-extents[0]):
+        #        return False
 
         #save ctx, as we want to restore the current line width etc
         ctx.save()
