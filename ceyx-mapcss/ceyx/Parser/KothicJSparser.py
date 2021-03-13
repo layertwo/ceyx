@@ -18,7 +18,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with spaetz' mapcss.  If not, see <http://www.gnu.org/licenses/>.
 #-------------------------------------------------------------------------
-import simplejson as json
+import json
 import re
 from ceyx.Parser.OSMparser import OSMparser
 from ceyx.utils import Rect

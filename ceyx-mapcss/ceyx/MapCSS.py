@@ -474,7 +474,7 @@ class MapCSS(object):
         curpos = 0
         while curpos != -1:
             # @import rule?
-            import_rule = re.match("\s*@import\s+([^;]*);", css[curpos:])
+            import_rule = re.match("\s*@import\s+url\(\"?([^\"\)]*)\"?\).*;", css[curpos:])
             if import_rule:
                 #allow only simple file names, no spaces surrounding etc.
                 import_file = import_rule.groups()[0].strip()
@@ -482,7 +482,8 @@ class MapCSS(object):
                     logging.error("Could not import file %s from file %s" % (
                             filepath, import_file))
                 self.parseCSS_file(import_file)
-                curpos += len(import_file.group())
+                curpos += len(import_rule.group())
+                continue
             #parse next rule, assume we are at the beginning of one
             nextpos = css.find('}', curpos)
             if nextpos == -1:

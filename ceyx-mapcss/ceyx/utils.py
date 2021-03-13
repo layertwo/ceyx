@@ -204,9 +204,9 @@ def get_rgb(color):
             color = '#%s' % ( md5(color).hexdigest()[:6] )
 
     if len(color) == 4:
-        r,g,b = int(color[1]*2,16)/15.0,int(color[2]*3,16)/15.0,int(color[3]*2,16)/15.0
+        r,g,b = int(color[1],16)/15.0,int(color[2],16)/15.0,int(color[3],16)/15.0
     elif len(color) == 7:
-        r,g,b = int(color[1:2],16)/15.0,int(color[3:4],16)/15.0,int(color[5:6],16)/15.0
+        r,g,b = int(color[1:3],16)/255.0,int(color[3:5],16)/255.0,int(color[5:7],16)/255.0
     else:
         raise CSSException('Invalid color specification (%s)' % color)
     return (r,g,b)
