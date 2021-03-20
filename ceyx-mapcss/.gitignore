@@ -1,6 +1,5 @@
-\#$
-\~$
-\.pyc$
-^map..\.png$
-^cache/
-\.orig$
+*~
+*.pyc
+map*.png
+*cache/
+*.orig
