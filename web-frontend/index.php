@@ -25,7 +25,7 @@ if(!$ok) {
 	// Default view if no cool input
 	$map->CenterLat = 47.51627321168;
 	$map->CenterLon = 19.054412841797;
-	$map->Zoom = 17;
+	$map->Zoom = 3;
 }
 
 // Process render
