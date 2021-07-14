@@ -335,6 +335,28 @@ class OSMrenderer(object):
             else: # no beziercurve:
                 ctx.line_to(x,y)
 
+    def relation_path_to_ctx(self, rel_obj, bezier, ctx):
+        first = True
+        for member in rel_obj.members:
+            waynodes = list(member.way.get_waynodes_xy(self))
+            #if we beziercurve this, calculate the control points
+            if bezier:
+                ctl_xys = ceyx.utils.beziercurve(waynodes)
+            #go to the first way point and draw from here
+            if first:
+                x,y = waynodes[0]
+                ctx.move_to(x,y)
+            #render the way on the image
+            for (x,y) in waynodes:
+                if first:
+                    first = False
+                elif bezier: #beziercurve, control points already in 'ctl_xys'
+                    cp1_x,cp1_y = ctl_xys.pop(0)
+                    cp2_x,cp2_y = ctl_xys.pop(0)
+                    ctx.curve_to(cp1_x,cp1_y,cp2_x,cp2_y,x,y)
+                else: # no beziercurve:
+                    ctx.line_to(x,y)
+
     def render_way(self, ele, rules, z_index, ctx):
         """Render a single way or relation, on the Cairo context
 
@@ -381,8 +403,7 @@ class OSMrenderer(object):
         else: #Relation with many ways
             # only draw ODDly intersected areas by default to make multipolygons works sanely
             ctx.set_fill_rule(cairo.FILL_RULE_EVEN_ODD)
-            for member in render_obj.members:
-                self.way_path_to_ctx(member.way, bezier, ctx)
+            self.relation_path_to_ctx(render_obj, bezier, ctx)
 
         try:
             casingwidth = float(rules.get('casing-width', 0))
