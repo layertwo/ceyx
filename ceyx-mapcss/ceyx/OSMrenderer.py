@@ -318,9 +318,18 @@ class OSMrenderer(object):
 
         return max_dist, (ret_point1, ret_point2)
 
+    def way_draw_segment(self, x, y, ctl_xys, ctx):
+        if ctl_xys is not None: #beziercurve, control points already in 'ctl_xys'
+            cp1_x,cp1_y = ctl_xys.pop(0)
+            cp2_x,cp2_y = ctl_xys.pop(0)
+            ctx.curve_to(cp1_x,cp1_y,cp2_x,cp2_y,x,y)
+        else: # no beziercurve:
+            ctx.line_to(x,y)
+
     def way_path_to_ctx(self, way_obj, bezier, ctx):
         waynodes = list(way_obj.get_waynodes_xy(self))
         #if we beziercurve this, calculate the control points
+        ctl_xys = None
         if bezier:
             ctl_xys = ceyx.utils.beziercurve(waynodes)
         #go to the first way point and draw from here
@@ -328,34 +337,55 @@ class OSMrenderer(object):
         ctx.move_to(x,y)
         #render the way on the image
         for (x,y) in waynodes[1:]:
-            if bezier: #beziercurve, control points already in 'ctl_xys'
-                cp1_x,cp1_y = ctl_xys.pop(0)
-                cp2_x,cp2_y = ctl_xys.pop(0)
-                ctx.curve_to(cp1_x,cp1_y,cp2_x,cp2_y,x,y)
-            else: # no beziercurve:
-                ctx.line_to(x,y)
+            self.way_draw_segment(x, y, ctl_xys, ctx)
 
     def relation_path_to_ctx(self, rel_obj, bezier, ctx):
-        first = True
-        for member in rel_obj.members:
+        """Draws lines of a multipoligon on the image"""
+        if len(rel_obj.members) == 0:
+            return
+        firstnode = None #first node of first line
+        lastnode = None #last node of actual line
+        member = rel_obj.members[0]
+        while firstnode == None or firstnode != lastnode:
             waynodes = list(member.way.get_waynodes_xy(self))
             #if we beziercurve this, calculate the control points
+            ctl_xys = None
             if bezier:
                 ctl_xys = ceyx.utils.beziercurve(waynodes)
-            #go to the first way point and draw from here
-            if first:
-                x,y = waynodes[0]
-                ctx.move_to(x,y)
-            #render the way on the image
-            for (x,y) in waynodes:
-                if first:
-                    first = False
-                elif bezier: #beziercurve, control points already in 'ctl_xys'
-                    cp1_x,cp1_y = ctl_xys.pop(0)
-                    cp2_x,cp2_y = ctl_xys.pop(0)
-                    ctx.curve_to(cp1_x,cp1_y,cp2_x,cp2_y,x,y)
-                else: # no beziercurve:
-                    ctx.line_to(x,y)
+            #draw line either in normal or reversed order
+            if waynodes[-1] == lastnode: #lastnode=None value will go to normal order
+                for (x,y) in reversed(waynodes):
+                    self.way_draw_segment(x, y, ctl_xys, ctx)
+                lastnode = waynodes[0]
+            else:
+                for (x,y) in waynodes:
+                    #go to the first way point and draw from here
+                    if firstnode == None:
+                        x,y = waynodes[0]
+                        ctx.move_to(x,y)
+                        firstnode = waynodes[0]
+                    else:
+                        self.way_draw_segment(x, y, ctl_xys, ctx)
+                lastnode = waynodes[-1]
+
+            #avoid running in circles on one line
+            if len(rel_obj.members) == 1:
+                break
+
+            #find an adjoining line to last line
+            new_member = None
+            for next_member in rel_obj.members:
+                if next_member == member:
+                    continue
+                waynodes = list(next_member.way.get_waynodes_xy(self))
+                if waynodes[0] == lastnode or waynodes[-1] == lastnode:
+                    new_member = next_member
+                    break
+            if new_member == None:
+                #not closed relation, give up
+                break
+            else:
+                member = new_member
 
     def render_way(self, ele, rules, z_index, ctx):
         """Render a single way or relation, on the Cairo context
