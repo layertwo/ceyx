@@ -67,6 +67,10 @@ way [landuse=forest] {
 	fill-color: #c9ebd6;
 	color: #c9ebd6;
 }
+way [natural=scrub] {
+	fill-color: #d3eede;
+	color: #c9ebd6;
+}
 way [landuse=residential] {
 	fill-color: #e4e4e4;
 	width: 0;
