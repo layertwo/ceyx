@@ -492,23 +492,7 @@ function updateUrls() {
 function checkRenderForm() {
 	updateSelectedAreaInfo();
 	if(BOXWIDTH && BOXHEIGHT) {
-
-		// Calculate per paper width and height requirement 
-		var pages = $("#pagesselect").val().split("x");
-		var page_w = BOXWIDTH / pages[0];
-		var page_h = BOXHEIGHT / pages[1];
-
-		// landscape or portrait paper, bloody simple check
-		var paper = $("#paperselect").val();
-		var askuser = false;
-		if(paper == "a4l" || paper == "letterl") {
-			askuser = (page_w < page_h);
-		} else {
-			askuser = (page_w > page_h);
-		}
-		if(askuser) {
-			return confirm("Paper aspect ratio is opposite of your selection. Continue?\n\nYou may want to select different paper orientation or divide to pages or still print this way.");
-		}
+		// Could do some more checks here if needed
 		return true;
 	} else {
 		alert("There is no selection. Use 'Draw box' first.");
