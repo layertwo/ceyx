@@ -53,6 +53,7 @@ way [highway=tertiary]::centerline {
 }
 /* in low zoom, draw unclassified, residential just as gray lines*/
 way|z-13 [highway=unclassified]::centerline,
+way|z-13 [highway=living_street]::centerline,
 way|z-13 [highway=residential]::centerline {
 	color: #909090;
 }
@@ -64,6 +65,10 @@ way [highway=unclassified]::centerline {
 way [highway=residential]::centerline {
 	z-index: 0.1;
 	color: #fff;
+}
+way [highway=living_street]::centerline {
+	z-index: 0.1;
+	color: #eee;
 }
 way [highway=track]::centerline {
 	z-index: 0.0;
@@ -107,6 +112,7 @@ way [highway=secondary] {width: 3;}
 way [highway=tertiary] {width: 3;}
 way [highway=unclassified] {width: 3;}
 way [highway=residential] {width: 3;}
+way [highway=living_street] {width: 3;}
 way [highway=track] {width:3;}
 way [highway=service] {width: 8;}
 way [highway=cycleway],
@@ -143,6 +149,7 @@ way|z14- [highway=secondary]::label {
 way|z15- [highway=tertiary]::label,
 way|z15- [highway=unclassified]::label,
 way|z15- [highway=residential]::label,
+way|z15- [highway=living_street]::label,
 way|z15- [highway=footway]::label,
 way|z15- [highway=pedestrian]::label {
 	font-size: 12;
@@ -161,6 +168,7 @@ way|z14- [highway=secondary] {width: 22;}
 way|z14- [highway=tertiary] {width: 22;}
 way|z14- [highway=unclassified] {width: 18;}
 way|z14- [highway=residential] {width: 18;}
+way|z14- [highway=living_street] {width: 18;}
 way|z14- [highway=pedestrian] {width: 18;}
 way|z14- [highway=track] {width:3;}
 way|z14- [highway=service] {width: 8;}
