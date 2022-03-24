@@ -160,12 +160,11 @@ Your e-mail (optional):<br/>
 </form>
 
 <!-- Job download panel -->
-<form action="download.php" method="post" class="panel">
+<div class="panel">
 <h2>Download result</h2>
-Job ID: <input type="text" name="jobid" value="<?php echo((isset($jobid) && $jobid !== false) ? $jobid : "") ?>" style="width: 110px;" title="Enter a previously rendered job ID to show it." />
-<input name="render" type="submit" value="View rendered map" /> |
-<a href="list.php" target="_blank">View all</a>
-</form>
+<p><a href="list.php" target="_blank">View all maps</a></p>
+</div>
+
 </div>
 </div>
 <script type="text/javascript">
