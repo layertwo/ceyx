@@ -131,32 +131,6 @@ way [tunnel=1][highway]::centerline {
 	casing-opacity: 0.6;
 }
 
-/* Street names */
-/*
-way|z12-13 [highway=primary]::label,
-way|z12-13 [highway=secondary]::label, 
-way|z13-14 [highway=tertiary]::label,
-way|z13- [highway=unclassified]::label {
-	font-size: 7;
-	text: name;
-}
-way|z14- [highway=primary]::label,
-way|z14- [highway=secondary]::label {
-	font-size: 9;
-	text-halo-radius: 1.5;
-	text: name;
-}
-way|z15- [highway=tertiary]::label,
-way|z15- [highway=unclassified]::label,
-way|z15- [highway=residential]::label,
-way|z15- [highway=living_street]::label,
-way|z15- [highway=footway]::label,
-way|z15- [highway=pedestrian]::label {
-	font-size: 12;
-	text: name;
-}*/
-
-
 /* highways - much wider for print */
 way|z14- [highway=motorway],
 way|z14- [highway=trunk] {width: 28;}
