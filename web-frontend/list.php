@@ -189,7 +189,7 @@ function processProject($jobid, $date, $counter) {
 	if(is_file("previews/$jobid.png")) {
 		$preview = "previews/$jobid.png";
 	} else {
-		$preview = "images/draw_anim.gif"; // FIXME: licence? http://www.ohmagif.com/2011/09/20/infinite-drawing/
+		$preview = "images/render_progress2.gif"; // image made from output
 	}
 	// Output project as HTML
 ?>
