@@ -17,6 +17,9 @@ way [highway]::label {
 	text-position: line;
 	text: name;
 }
+way|z13 [highway]::label {
+	text-offset: -17;
+}
 
 /* Highway colors */
 way [highway=motorway]::centerline {
@@ -150,6 +153,43 @@ way|z14- [highway=cycleway], way|z14- [highway=path][bicycle=designated] {width:
 way|z14- [highway=footway] {width: 2;}
 way|z14- [highway=path][!bicycle=designated] {width: 2;}
 
+/* Thin ways on "bare" mode */
+way|z13 [highway=motorway],
+way|z13 [highway=trunk],
+way|z13 [highway=motorway_link],
+way|z13 [highway=trunk_link],
+way|z13 [highway=primary],
+way|z13 [highway=primary_link],
+way|z13 [highway=secondary] {
+	width: 4;
+}
+way|z13 [highway=tertiary],
+way|z13 [highway=unclassified],
+way|z13 [highway=residential],
+way|z13 [highway=living_street],
+way|z13 [highway=pedestrian],
+way|z13 [highway=track],
+way|z13 [highway=service],
+way|z13 [highway=cycleway],
+way|z13 [highway=path][bicycle=designated],
+way|z13 [highway=footway],
+way|z13 [highway=path][!bicycle=designated] {
+	width: 2;
+}
+way|z13 [highway=tertiary]::centerline,
+way|z13 [highway=unclassified]::centerline,
+way|z13 [highway=residential]::centerline,
+way|z13 [highway=living_street]::centerline,
+way|z13 [highway=pedestrian]::centerline,
+way|z13 [highway=track]::centerline,
+way|z13 [highway=service]::centerline,
+way|z13 [highway=cycleway]::centerline,
+way|z13 [highway=path][bicycle=designated]::centerline,
+way|z13 [highway=footway]::centerline,
+way|z13 [highway=path][!bicycle=designated]::centerline {
+	casing-width: 0;
+	color: #000;
+}
 
 way [bridge=1][highway]::centerline {
 	casing-width: 5;
