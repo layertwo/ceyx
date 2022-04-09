@@ -49,8 +49,17 @@ fi
 
 # Download OSM Data (parameter is bbox string)
 function downloadosm {
-	echo wget "$APIURL?data=[out:xml][timeout:25];(node($1);way($1);relation($1););out meta;>;out meta qt;"
-	wget "$APIURL?data=[out:xml][timeout:25];(node($1);way($1);relation($1););out meta;>;out meta qt;" -O "$OSMFILE" 2>&1
+	if [ "$2" = "13" ]
+	then
+		# Bare format's zoom value, filter out some OSM data
+		QUERY="$APIURL?data=[out:xml][timeout:25];(nwr($1);-(node[amenity]($1);node[shop]($1);way[building]($1);>;););out meta;>;out meta qt;"
+	else
+		# Medium or full detail, download complete OSM
+		QUERY="$APIURL?data=[out:xml][timeout:25];(node($1);way($1);relation($1););out meta;>;out meta qt;"
+	fi
+
+	echo wget "$QUERY" -O "$OSMFILE"
+	wget "$QUERY" -O "$OSMFILE" 2>&1
 	if [ "$?" != "0" ] 
 	then
 		errorexit "Error: wget returned error code $?"
@@ -82,7 +91,7 @@ then
 			rm -f "$JOB"
 
 			# FIXME: check area somehow? 
-			downloadosm "$LAT1,$LON1,$LAT2,$LON2"
+			downloadosm "$LAT1,$LON1,$LAT2,$LON2" "$ZOOM"
 			mkdir "$DLDIR"
 
 			echo ./osm2png.py -s ${PAGEPX} -a -z $ZOOM -b $RAT1,$RON1,$RAT2,$RON2 -r "$CSS.mapcss" -d "$OSMFILE" -o "$DLDIR/map$ZOOM.png"
@@ -97,7 +106,7 @@ then
 			rm -f "$JOB"
 
 			# FIXME: check area somehow? 
-			downloadosm "$LAT1,$LON1,$LAT2,$LON2"
+			downloadosm "$LAT1,$LON1,$LAT2,$LON2" "$ZOOM"
 			mkdir "$DLDIR"
 
 			echo ./osm2png.py -s ${PAGEPX} -a -z $ZOOM -b $RAT1,$RON1,$RAT2,$RON2 --batch=$W,$H -r "$CSS.mapcss" -d "$OSMFILE" -o "$DLDIR"
