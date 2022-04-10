@@ -31,13 +31,15 @@ if(!$ok) {
 // Process render
 if(array_key_exists("render", $_POST)) {
 	$jobid = false;
-	// Capcha check
-	if(!array_key_exists('code', $_POST)
-		|| !array_key_exists('code', $_SESSION)
-		|| $_POST["code"] != $_SESSION["code"]) {
-		echo "CAPTHCA validation code didn't match.";
-	} else {
- 		$jobid = $map->submitRender();
+	if($map->checkForm()) {
+		// Capcha check
+		if(!array_key_exists('code', $_POST)
+			|| !array_key_exists('code', $_SESSION)
+			|| $_POST["code"] != $_SESSION["code"]) {
+			echo "CAPTHCA validation code didn't match.";
+		} else {
+			$jobid = $map->submitRender();
+		}
 	}
 	if($jobid !== false) {
 ?>
@@ -79,7 +81,7 @@ Job failed, with a reason visible above...
 	<h2>Search</h2>
 	Search or OSM permalink:<input type="text" id="q" name="osmlink" value="" title="Type a city name here or paste an OSM permalink to jump to."/>
 	<input type="submit" value="Search/Jump" onclick="return doJump();"/>
-	<a id="osmlink" href="<?php echo($map->getLink("osm")); ?>" target="_blank" title="Opens the current view on OSM in new window.">Open on OSM</a>
+	<a id="osmlink" href="" target="_blank" title="Opens the current view on OSM in new window.">Open on OSM</a>
 
 	<ul id="results">
 	</ul>
@@ -89,19 +91,15 @@ Job failed, with a reason visible above...
 <?php 
 // Renderer panel, if selection has size
 // Form data to unsafe strings
-$ustyle = "";
-$upages = "";
-$upaper = "";
+$ustyle = $map->Css;
+$upages = $map->Pages;
+$upaper = $map->Paper;
+$udetailzoom = $map->DetailZoom;
 $unotes = "";
-$udetailzoom = "";
-if(array_key_exists("style", $_POST)) { $ustyle = $_POST["style"]; }
-if(array_key_exists("pages", $_POST)) { $upages = $_POST["pages"]; }
-if(array_key_exists("paper", $_POST)) { $upaper = $_POST["paper"]; }
 if(array_key_exists("notes", $_POST)) { $unotes = $_POST["notes"]; }
-if(array_key_exists("detailzoom", $_POST)) { $udetailzoom = $_POST["detailzoom"]; }
 
 ?>
-<form id="renderForm" action="<?php echo($map->getLink("")); ?>" method="post" class="panel" onsubmit="return checkRenderForm();">
+<form id="renderForm" action="<?php echo($map->getLink("action")); ?>" method="post" class="panel" onsubmit="return checkRenderForm();">
 <input type="hidden" name="selectlat1" id="selectlat1" value="<?php echo($map->SelectLat1); ?>" />
 <input type="hidden" name="selectlon1" id="selectlon1" value="<?php echo($map->SelectLon1); ?>" />
 <input type="hidden" name="selectlat2" id="selectlat2" value="<?php echo($map->SelectLat2); ?>" />
@@ -115,7 +113,7 @@ if(array_key_exists("detailzoom", $_POST)) { $udetailzoom = $_POST["detailzoom"]
 
 <p class="clientrender important" id="clientinfo">Render info...</p>
 <p style="margin-bottom: 0;">
-	Divide to pages: <select id="pagesselect" name="pages" title="Make sure to divide to enough pages based on area size and density, otherwise labels will overlap!" onchange="updateSelectedAreaInfo();">
+	Divide to pages: <select id="pagesselect" name="pages" title="Make sure to divide to enough pages based on area size and density, otherwise labels will overlap!" onchange="updateSelectedAreaInfo();updateUrls();">
 	<option value="1x1"<?php sel($upages == "1x1"); ?>>  1</option>
 	<option value="2x1"<?php sel($upages == "2x1"); ?>>2x1</option>
 	<option value="3x1"<?php sel($upages == "3x1"); ?>>3x1</option>
@@ -128,20 +126,20 @@ if(array_key_exists("detailzoom", $_POST)) { $udetailzoom = $_POST["detailzoom"]
 	</select><br/>
 <table style="width: 100%">
 <tr><th>Paper:</th>
-<td><select id="paperselect" name="paper" title="Selects image width. Aspect ratio to fit in height is up to your guess or print preivew!">
+<td><select id="paperselect" name="paper" title="Selects image width. Aspect ratio to fit in height is up to your guess or print preivew!" onchange="updateUrls();">
 <option value="a4p"<?php sel($upaper == "a4p"); ?>>A4 portrait</option>
 <option value="a4l"<?php sel($upaper == "a4l"); ?>>A4 landscape</option>
 <option value="letterp"<?php sel($upaper == "letterp"); ?>>Letter portrait</option>
 <option value="letterl"<?php sel($upaper == "letterl"); ?>>Letter landscape</option>
 </select></td></tr>
 <tr><th>Content:</th>
-<td><select name="style" title="Selects which objects to prefer in output.">
+<td><select id="styleselect" name="style" title="Selects which objects to prefer in output." onchange="updateUrls();">
 	<option value="shops"<?php sel($ustyle == "shops"); ?>>Shops, POIs</option>
 	<option value="housenumbers"<?php sel($ustyle == "housenumbers"); ?>>House numbers</option>
 	<option value="wheelchair"<?php sel($ustyle == "wheelchair"); ?>>Wheelchair</option>
 </select></td></tr>
 <tr><th>Detail:</th>
-<td><select name="detailzoom" id="detailzoom" title="Selects how detailed the printed information should be. See help for details."  onchange="updateSelectedAreaInfo();">
+<td><select name="detailzoom" id="detailzoom" title="Selects how detailed the printed information should be. See help for details." onchange="updateSelectedAreaInfo();updateUrls();">
 <option value="16"<?php sel($udetailzoom == "15"); ?>>Full detail</option>
 <option value="14"<?php sel($udetailzoom == "14"); ?>>Medium detail</option>
 <option value="13"<?php sel($udetailzoom == "13"); ?>>Bare</option>
@@ -156,7 +154,7 @@ Your e-mail (optional):<br/>
 <input type="text" name="email" /-->
 <img src="gd.php" id="captcha" alt="Capcha, sorry, you need to write this text to the box below." title="Can't read? Start to render and you'll get a new code! Write this code to the box below." /><br/>
 <input id="submit" name="render" type="submit" value="Start to render" title="This submits your selected area to a custom crafted OSM to PNG converter that will generate a printer friendly HTML output."/> |
-<a id="permalink" href="<?php echo($map->getLink("")); ?>" title="Store the link from the URL bar for later. Remembers selection, but not the paper settings.">Permalink</a></p>
+<a id="permalink" href="" title="Store the link from the URL bar for later. Remembers selection, but not the paper settings.">Permalink</a></p>
 </form>
 
 <!-- Job download panel -->

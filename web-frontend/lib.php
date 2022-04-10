@@ -15,8 +15,11 @@ class MapSettings {
 	public $CenterLon = 19.054412841797;
 	public $Zoom = 17; /*< Current view's zoom */
 	public $Css; /*< Selected style (dropdown) */
+	public $Pages = "1"; /*< Selected number of pages ("WxH" or 1) */
+	public $Paper = "a4p"; /*< Selected paper size */
+	public $Notes = ""; /*< User entered title for the map */
 	public $ServerUrl = 'http://tile.openstreetmap.org/';
-	public $DetailZoom = 15; /*< Zoom level passed to MapCSS renderer, specifies detail level */
+	public $DetailZoom = 16; /*< Zoom level passed to MapCSS renderer, specifies detail level */
 	public $SelectLat1 = null; /*< Box selection corners */
 	public $SelectLon1 = null;
 	public $SelectLat2 = null;
@@ -41,6 +44,7 @@ class MapSettings {
 		"a4l" => "A4 landsape", 
 		"letterp" => "Letter portrait", 
 		"letterl" => "Letter landsape");
+	public $STYLES = array("shops", "housenumbers", "wheelchair");
 
 	/**
 	 * Clears actual position (but why?)
@@ -86,6 +90,27 @@ class MapSettings {
 				$this->SelectLat2 = round(floatval($sel[2]), 5);
 				$this->SelectLon2 = round(floatval($sel[3]), 5);
 			}
+		}
+
+		// Store paper settings from query string
+		$this->Pages = "1";
+		if(array_key_exists('pages', $_GET)) {
+			list($w, $h) = $this->getPages($_GET['pages']);
+			if($w > 1 || $h > 1) {
+				$this->Pages = $w."x".$h;
+			}
+		}
+		$this->Paper = "a4p";
+		if(array_key_exists('paper', $_GET) && in_array($_GET['paper'], $this->PAPERSIZES)) {
+			$this->Paper = $_GET['paper'];
+		}
+		$this->Css = "shops";
+		if(array_key_exists('style', $_GET) && in_array($_GET['style'], $this->STYLES)) {
+			$this->Css = $_GET['style'];
+		}
+		$this->DetailZoom = "16";
+		if(array_key_exists('detail', $_GET) && in_array($_GET['detail'], array(13, 14, 16))) {
+			$this->DetailZoom = intval($_GET['detail']);
 		}
 
 		return ($this->CenterLat != 0 && $this->CenterLon != 0 && $this->Zoom != 0);
@@ -158,33 +183,37 @@ class MapSettings {
 	/**
 	 * Gets a link for navigation or selection
 	 *
-	 * @param $direction To which direction the map should move by this link (up, down, left, right)
-	 * @param $addSelection 1,2: add to this selection buffer (use getSelectionBuffer), -1: delete selection, 0 no change.
-	 * @param $selx Tile to add to selection buffer
-	 * @param $sely Tile to add to selection buffer
+	 * @param $mode What type of link to retun ("osm" to jump to osm, "action" for form action, empty for permalink)
 	 */
-	public function getLink($direction, $selx = -1, $sely = -1)
+	public function getLink($mode)
 	{
 		$linklat = $this->CenterLat;
 		$linklon = $this->CenterLon;
 		$zoom = $this->Zoom;
 
 		// Go to openstreetmap.org
-		if($direction == "osm") {
+		// FIXME: this is now unused, becasue it's created on client side. Remove?
+		if($mode == "osm") {
 			return("http://www.openstreetmap.org/#map=$zoom/$linklat/$linklon");
 		}
 
-		// Position link
+		// Map position
 		$link = "index.php?lat=$linklat&lon=$linklon&zoom=".$zoom;
 
-		// Selection link if any
-		if($direction != "unselect") {
-			if($this->SelectLat1) {
-				$link .= "&box=".$this->SelectLat1.","
-					.$this->SelectLon1.","
-					.$this->SelectLat2.","
-					.$this->SelectLon2;
-			}
+		// Selection box
+		if($this->SelectLat1) {
+			$link .= "&box=".$this->SelectLat1.","
+				.$this->SelectLon1.","
+				.$this->SelectLat2.","
+				.$this->SelectLon2;
+		}
+
+		// Form fields (dropdowns)
+		if($mode != "action") {
+			$link .= "&pages=".$this->Pages;
+			$link .= "&paper=".$this->Paper;
+			$link .= "&style=".$this->Css;
+			$link .= "&detail=".$this->DetailZoom;
 		}
 		return $link;
 	}
@@ -216,58 +245,85 @@ class MapSettings {
 	}
 
 	/**
+	 * Checks the form post values before calling submitRender() and stores form fields in member variables.
+	 *
+	 * Most of these are unlikely to be invalid since they are dropdowns. So this is just safety check.
+	 *
+	 * returns true on form OK, false on not OK and echo prints the error.
+	 */
+	public function checkForm() {
+		global $_POST;
+
+		$form_error = "";
+
+		// MapCSS selection
+		$this->Css = "shops";
+		if(array_key_exists("style", $_POST) && in_array($_POST["style"], $this->STYLES)) {
+			$this->Css = $_POST["style"];
+		} else {
+			$form_error .= "No style selected.";
+		}
+		// Readable title for the drawing
+		$this->Notes = "";
+		if(array_key_exists("notes", $_POST)) {
+			$this->Notes = preg_replace('/[\x00-\x1F\x7F]/', '', $_POST["notes"]); // Removes some CTRL chars
+			if(strlen($this->Notes) > 100) {
+				$this->Notes = substr($this->Notes, 0, 100);
+			}
+		}
+		// Paper selection
+		$this->Paper = "a4p";
+		if(array_key_exists("paper", $_POST) && in_array($_POST["paper"], $this->PAPERSIZES)) {
+			$this->Paper = $_POST["paper"];
+		} else {
+			$form_error .= "No paper selected.";
+		}
+		// Detail zoom level (passed to CeyX for applying MapCSS rules)
+		$this->DetailZoom = 15;
+		if(array_key_exists("detailzoom", $_POST) && ($this->DetailZoom = intval($_POST["detailzoom"])) > 0
+			&& $this->DetailZoom >= $this->DETAIL_MIN_ZOOM && $this->DetailZoom <= $this->DETAIL_MAX_ZOOM) {
+			// (detailzoom set in conditions list!)
+		} else {
+			$form_error .= "No detail zoom level selected.";
+		}
+		if(array_key_exists('pages', $_POST)) {
+			list($w, $h) = $this->getPages($_POST['pages']); // Also checks allowed limit, returns 1,1 minimum!
+		} else {
+			$w = 1;
+			$h = 1;
+		}
+		if($w == 1 && $h == 1) {
+			$this->Pages = "1";
+		} else {
+			$this->Pages = $w."x".$h;
+		}
+
+		// Exit on form data input error
+		if($form_error) {
+			echo $form_error;
+			return false;
+		}
+		return true;
+	}
+
+	/**
 	 * Passes the selection to the renderer via creating text data file
 	 *
 	 * returns Job ID (string) on success, false on failure (no selection, file error)
 	 */
-	public function submitRender() {
-		global $_POST;
-
+	function submitRender()
+	{
 		$lat1 = 0;
 		$lon1 = 0;
 		$lat2 = 0;
 		$lon2 = 0;
-
-		// MapCSS selection
-		$style = "shops";
-		if(array_key_exists("style", $_POST) && in_array($_POST["style"], array("shops", "housenumbers", "wheelchair"))) {
-			$style = $_POST["style"];
-		} else {
-			echo("No style selected.");
-			return false;
-		}
-		// Readable title for the drawing
-		$notes = "";
-		if(array_key_exists("notes", $_POST)) {
-			$notes = preg_replace('/[\x00-\x1F\x7F]/', '', $_POST["notes"]); // Removes some CTRL chars
-			if(strlen($notes) > 100) {
-				$notes = substr($notes, 0, 100);
-			}
-		}
-		// Paper selection
-		$paper = "a4p";
-		if(array_key_exists("paper", $_POST) && in_array($_POST["paper"], $this->PAPERSIZES)) {
-			$paper = $_POST["paper"];
-		} else {
-			echo("No paper selected.");
-			return false;
-		}
-		// Detail zoom level (passed to CeyX for applying MapCSS rules)
-		$detailzoom = 15;
-		if(array_key_exists("detailzoom", $_POST) && ($detailzoom = intval($_POST["detailzoom"])) > 0
-			&& $detailzoom >= $this->DETAIL_MIN_ZOOM && $detailzoom <= $this->DETAIL_MAX_ZOOM) {
-			// (detailzoom set in conditions list!)
-		} else {
-			echo("No detail zoom level selected.");
-			return false;
-		}
+		list($w, $h) = ($this->Pages == '1' ? array(1,1) : explode('x', $this->Pages));
 
 		// Don't we have box selection? (initalized from index.php)
 		if($this->SelectLat1 !== null) {
 
 			$this->normalizeSelection();
 
-			list($w, $h) = $this->getPages(); // Also checks allowed limit, returns 1,1 minimum!
 			list($lat1, $lon1, $lat2, $lon2) = Array($this->SelectLat1, $this->SelectLon1, $this->SelectLat2, $this->SelectLon2);
 
 			if($w == 1 && $h == 1) {
@@ -325,23 +381,23 @@ class MapSettings {
 		fwrite($out, $mode.$sep);
 
 		if($mode == 'onebox') {
-			fwrite($out, intval($detailzoom).$sep);
+			fwrite($out, intval($this->DetailZoom).$sep);
 			fwrite($out, $lat1.$sep);
 			fwrite($out, $lon1.$sep);
 			fwrite($out, $lat2.$sep);
 			fwrite($out, $lon2.$sep);
-			fwrite($out, $style.$sep);
-			$this->generateHtml($mode, $name, $detailzoom, 0, 0, $notes, $paper, $dLon, $dLat);
+			fwrite($out, $this->Css.$sep);
+			$this->generateHtml($mode, $name, $this->DetailZoom, 0, 0, $this->Notes, $this->Paper, $dLon, $dLat);
 		} else if($mode == 'boxes') {
-			fwrite($out, intval($detailzoom).$sep);
+			fwrite($out, intval($this->DetailZoom).$sep);
 			fwrite($out, $lat1.$sep);
 			fwrite($out, $lon1.$sep);
 			fwrite($out, $box_lat2.$sep);
 			fwrite($out, $box_lon2.$sep);
 			fwrite($out, $w.$sep);
 			fwrite($out, $h.$sep);
-			fwrite($out, $style.$sep);
-			$this->generateHtml($mode, $name, $detailzoom, $w, $h, $notes, $paper, round($dLon/$w), round($dLat/$h));
+			fwrite($out, $this->Css.$sep);
+			$this->generateHtml($mode, $name, $this->DetailZoom, $w, $h, $this->Notes, $this->Paper, round($dLon/$w), round($dLat/$h));
 		}
 
 		// bbox increased a little for download (about 200m at Budapest)
@@ -407,23 +463,20 @@ class MapSettings {
 	}
 
 	/**
-	 * Reads page selection from the FORM
+	 * Reads page selection from the passed string (form value)
 	 *
 	 * @returns Array of two values, number of pages in X and Y direction. 1x1 if PAGES_*_MAX exceeded.
 	 */
-	public function getPages() {
-		global $_POST;
+	public function getPages($pagesval) {
 
-		if(array_key_exists('pages', $_POST)) {
-			// Format is "2x3"
-			$parts = explode('x', $_POST['pages']);
-			if(count($parts) == 2) {
-				$w = intval($parts[0]);
-				$h = intval($parts[1]);
+		// Format is "2x3"
+		$parts = explode('x', $pagesval);
+		if(count($parts) == 2) {
+			$w = intval($parts[0]);
+			$h = intval($parts[1]);
 
-				if($w > 0 && $w <= $this->PAGES_W_MAX && $h > 0 && $h <= $this->PAGES_H_MAX) {
-					return array($w, $h);
-				}
+			if($w > 0 && $w <= $this->PAGES_W_MAX && $h > 0 && $h <= $this->PAGES_H_MAX) {
+				return array($w, $h);
 			}
 		}
 		return array(1,1);

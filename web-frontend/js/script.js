@@ -499,7 +499,7 @@ function updateSelectedAreaInfo() {
 	}
 }
 
-// Update form action and permalink to store current position and selection
+// Update URL in form action, permalink and Jump to OSM to current position and selection
 function updateUrls() {
 	var center = map.getCenter().clone();
 	var zoom = map.getZoom();
@@ -513,6 +513,11 @@ function updateUrls() {
 	document.getElementById("osmlink").href = "https://www.openstreetmap.org/#map=" + osmquery;
 	query = addBoxToUrl(query); // Add selection if any
 	document.getElementById("renderForm").action = "index.php?" + query;
+	// Add form inputs too to permalink
+	query += "&pages=" + $("#pagesselect").val();
+	query += "&paper=" + $("#paperselect").val();
+	query += "&style=" + $("#styleselect").val();
+	query += "&detail=" + $("#detailzoom").val();
 	document.getElementById("permalink").href = "index.php?" + query;
 
 	// Update zoom hints
