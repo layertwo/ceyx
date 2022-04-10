@@ -2,8 +2,8 @@ var R = 6378100; /* Earth radius */
 
 var BOXWIDTH = 0; /* Selection width and height if any. Updated by showBoxSelectionInfo() call */
 var BOXHEIGHT = 0;
-var OBJECTCOUNT = 0; /* OSM elements within the selected area */
 var OVERPASSURL = "https://lz4.overpass-api.de/api/interpreter";
+var QUERYCACHE = {};
 
 function log(str) {
 	if(console && console.log) {
@@ -180,10 +180,10 @@ function storeSelection(lat1, lon1, lat2, lon2) {
 function showBoxSelectionInfo(lat1, lon1, lat2, lon2) {
 	BOXHEIGHT = latDistance(lat1, lat2);
 	BOXWIDTH = lonDistance(lon1, lon2);
-	OBJECTCOUNT = 0;
 	var square_km = Math.round((BOXHEIGHT/1000) * (BOXWIDTH/1000),1);
 	var pages = $("#pagesselect").val().split("x");
 	pages = parseInt(pages[0]) * parseInt(pages[1]);
+	var detail = Number($('#detailzoom').val()); // 13: bare, 14: medium, 16: full
 
 	$(".clientrender").show();
 	$("#clientinfo").html("Selection: " 
@@ -193,9 +193,30 @@ function showBoxSelectionInfo(lat1, lon1, lat2, lon2) {
 			(square_km > MAX_SQUARE_KM ? " <span class=\"error\">Bigger than allowed " + MAX_SQUARE_KM + " square kilometers.</span>" : ""));
 	var bbox = lat1 + "," + lon1 + "," + lat2 + "," + lon2;
 
-	// Query number of OSM elements in the selected area
-	$.ajax(OVERPASSURL, {
-			data: { data: "[out:json][timeout:25];(node(" + bbox + "););out count;>;out count;" },
+	// Count nodes, but different zooms allow different amount / different query
+	var query = "[out:json][timeout:25];(node(" + bbox + "););out count;>;out count;"; // nodes only, all nodes counter
+	var maxobj = MAX_OBJ_PER_PAGE;
+	switch(detail) {
+		case 13:
+			// Bare render, count less nodes for limit (ignore buildings' nodes)
+			var query = "[out:json][timeout:25];(node(" + bbox + ");" +
+				" - (node[shop](" + bbox + ");node[amenity](" + bbox + ");" +
+				"node['addr:housenumber'](" + bbox + ");" +
+				"rel[building](" + bbox + ");>;way[building](" + bbox + "); >;););out count;>;out count;";
+			var maxobj = MAX_OBJ_PER_PAGE_BARE;
+			break;
+		case 14:
+			var maxobj = MAX_OBJ_PER_PAGE_MEDIUM;
+			break;
+	}
+
+	// Already queried same "number of nodes" from overpass?
+	if(QUERYCACHE[query]) {
+		showNodeCountError(QUERYCACHE[query], detail, pages, maxobj);
+	} else {
+		// Query number of OSM elements in the selected area
+		$.ajax(OVERPASSURL, {
+			data: { data: query },
 			success: function(res, textStatus, jqXHR) {
 				var elems = 0;
 				// Parse "count" result from Overpass API
@@ -206,18 +227,26 @@ function showBoxSelectionInfo(lat1, lon1, lat2, lon2) {
 						}
 					}
 				}
-				log(elems);
-				OBJECTCOUNT = elems;
-				if(OBJECTCOUNT/pages > MAX_OBJ_PER_PAGE) {
-				$("#clientinfo").append("<p class=\"error\">Selected " + OBJECTCOUNT + " OSM nodes" 
-					+ ". Please select smaller area or more papers. Maximum: " 
-					+ MAX_OBJ_PER_PAGE + " nodes per page.</p>");
-					$("#submit").prop("disabled", true);
-				} else {
-					$("#submit").prop("disabled", false)
-				}
+				showNodeCountError(elems, detail, pages, maxobj);
+				QUERYCACHE[query] = elems;
 			}
 		});
+	}
+}
+
+/*
+ * Show or hide "too many nodes in selection" error
+ */
+function showNodeCountError(elems, detail, pages, maxobj) {
+	log("nodes: " + elems + " pages: " + pages + " zoom: " + detail + " maxobj: " + maxobj);
+	if(elems/pages > maxobj) {
+	$("#clientinfo").append("<p class=\"error\">Selected " + elems + " OSM nodes"
+		+ ". Please select smaller area" + (detail == 13 ? " or more papers" : ", more papers or less details")
+		+ ". Maximum: " + maxobj + " nodes per page.</p>");
+		$("#submit").prop("disabled", true);
+	} else {
+		$("#submit").prop("disabled", false)
+	}
 }
 
 

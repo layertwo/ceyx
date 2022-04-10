@@ -141,7 +141,7 @@ if(array_key_exists("detailzoom", $_POST)) { $udetailzoom = $_POST["detailzoom"]
 	<option value="wheelchair"<?php sel($ustyle == "wheelchair"); ?>>Wheelchair</option>
 </select></td></tr>
 <tr><th>Detail:</th>
-<td><select name="detailzoom" title="Selects how detailed the printed information should be. See help for details.">
+<td><select name="detailzoom" id="detailzoom" title="Selects how detailed the printed information should be. See help for details."  onchange="updateSelectedAreaInfo();">
 <option value="16"<?php sel($udetailzoom == "15"); ?>>Full detail</option>
 <option value="14"<?php sel($udetailzoom == "14"); ?>>Medium detail</option>
 <option value="13"<?php sel($udetailzoom == "13"); ?>>Bare</option>
@@ -171,6 +171,8 @@ Your e-mail (optional):<br/>
 // Values from PHP
 var MAX_SQUARE_KM = <?php echo($map->MAX_SQUARE_KM); ?>;
 var MAX_OBJ_PER_PAGE = <?php echo($map->MAX_OBJ_PER_PAGE); ?>;
+var MAX_OBJ_PER_PAGE_MEDIUM = <?php echo($map->MAX_OBJ_PER_PAGE_MEDIUM); ?>;
+var MAX_OBJ_PER_PAGE_BARE = <?php echo($map->MAX_OBJ_PER_PAGE_BARE); ?>;
 
 $(document).ready(function () {
 
