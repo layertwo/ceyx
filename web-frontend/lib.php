@@ -32,7 +32,7 @@ class MapSettings {
 	public $MAX_SQUARE_KM = 18; /*< Maximum allowed rendered area */
 	public $MAX_OBJ_PER_PAGE = 2000; /*< Maximum OSM nodes on a page */
 	public $MAX_OBJ_PER_PAGE_MEDIUM = 2500; /*< Maximum OSM nodes in medium mode */
-	public $MAX_OBJ_PER_PAGE_BARE = 5000; /*< Maximum OSM nodes in bare mode (excluding buildings) */
+	public $MAX_OBJ_PER_PAGE_BARE = 3000; /*< Maximum OSM nodes in bare mode (excluding buildings) */
 	public $SITEURL = "http://render.osmtippek.hu/";
 
 	public $PAPERSIZES = array("a4p", "a4l", "letterp", "letterl");

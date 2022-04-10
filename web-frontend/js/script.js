@@ -199,7 +199,10 @@ function showBoxSelectionInfo(lat1, lon1, lat2, lon2) {
 	switch(detail) {
 		case 13:
 			// Bare render, count less nodes for limit (ignore buildings' nodes)
-			var query = "[out:json][timeout:25];(node(" + bbox + "); - (way[building](" + bbox + "); >;););out count;>;out count;";
+			var query = "[out:json][timeout:25];(node(" + bbox + ");" +
+				" - (node[shop](" + bbox + ");node[amenity](" + bbox + ");" +
+				"node['addr:housenumber'](" + bbox + ");" +
+				"rel[building](" + bbox + ");>;way[building](" + bbox + "); >;););out count;>;out count;";
 			var maxobj = MAX_OBJ_PER_PAGE_BARE;
 			break;
 		case 14:

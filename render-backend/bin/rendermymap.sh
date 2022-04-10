@@ -52,7 +52,7 @@ function downloadosm {
 	if [ "$2" = "13" ]
 	then
 		# Bare format's zoom value, filter out some OSM data
-		QUERY="$APIURL?data=[out:xml][timeout:25];(nwr($1);-(node[amenity]($1);node[shop]($1);way[building]($1);>;););out meta;>;out meta qt;"
+		QUERY="$APIURL?data=[out:xml][timeout:25];(nwr($1);-(node[amenity]($1);node[shop]($1);node['addr:housenumber']($1);rel[building]($1);>;way[building]($1);>;););out meta;>;out meta qt;"
 	else
 		# Medium or full detail, download complete OSM
 		QUERY="$APIURL?data=[out:xml][timeout:25];(node($1);way($1);relation($1););out meta;>;out meta qt;"
