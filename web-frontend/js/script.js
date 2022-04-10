@@ -509,7 +509,8 @@ function updateUrls() {
 	var lon = Math.round(center.lon * dig)/dig;
 	var lat = Math.round(center.lat * dig)/dig;
 	var query = "zoom="+zoom+"&lat="+lat+"&lon="+lon;
-	document.getElementById("osmlink").href = "https://www.openstreetmap.org/?" + query;
+	var osmquery = zoom+"/"+lat+"/"+lon;
+	document.getElementById("osmlink").href = "https://www.openstreetmap.org/#map=" + osmquery;
 	query = addBoxToUrl(query); // Add selection if any
 	document.getElementById("renderForm").action = "index.php?" + query;
 	document.getElementById("permalink").href = "index.php?" + query;

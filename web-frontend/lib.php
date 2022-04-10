@@ -99,29 +99,21 @@ class MapSettings {
 	public function readFromPermaLink($osmlink) 
 	{
 		$this->clean();
-		$query = parse_url($osmlink, PHP_URL_QUERY);
-		if($query) {
-			parse_str($query, $q);
+		$match = preg_match('/^.*#map=([0-9.\/]+).*$/', $osmlink, $matches);
+		if($match !== false) {
+			$q = explode('/', $matches[1]);
 
-			$lat = 0;
-			$lon = 0;
-			$zoom = 0;
+			if(count($q) == 3) {
+				$lat = floatval($q[1]);
+				$lon = floatval($q[2]);
+				$zoom = intval($q[0]);
 
-			if(array_key_exists("lat", $q)) {
-				$lat = floatval($q["lat"]);
-			}
-			if(array_key_exists("lon", $q)) {
-				$lon = floatval($q["lon"]);
-			}
-			if(array_key_exists("zoom", $q)) {
-				$zoom = intval($q["zoom"]);
-			}
-
-			if($lat != 0 && $lon != 0 && $zoom != 0) {
-				$this->CenterLat = $lat;
-				$this->CenterLon = $lon;
-				$this->Zoom = $zoom;
-				return true;
+				if($lat != 0 && $lon != 0 && $zoom != 0) {
+					$this->CenterLat = $lat;
+					$this->CenterLon = $lon;
+					$this->Zoom = $zoom;
+					return true;
+				}
 			}
 		}
 		return false;
@@ -179,7 +171,7 @@ class MapSettings {
 
 		// Go to openstreetmap.org
 		if($direction == "osm") {
-			return("http://www.openstreetmap.org/?lat=".$linklat."&lon=".$linklon."&zoom=".$zoom);
+			return("http://www.openstreetmap.org/#map=$zoom/$linklat/$linklon");
 		}
 
 		// Position link
