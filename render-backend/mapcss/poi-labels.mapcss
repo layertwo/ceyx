@@ -22,9 +22,9 @@ node|z15-[historic]::label,
 node|z15-[railway]::label,
 node|z15-[public_transport]::label,
 node|z15-[emergency]::label {
-    font-size: 12;
+    font-size: 15;
     text: name;
-	text-offset: -18;
+	text-offset: -21;
 	z-index: 6;
     max-width: 1000;
 	fill-opacity:0;
@@ -44,7 +44,7 @@ way|z15-[historic]::label,
 way|z15-[railway]::label,
 way|z15-[public_transport]::label,
 way|z15-[emergency]::label {
-    font-size: 12;
+    font-size: 15;
     text: name;
 	z-index: 6;
 	fill-opacity:0;
@@ -65,7 +65,7 @@ way|z14-:closed[railway]::label,
 way|z14-:closed[public_transport]::label,
 way|z14-:closed[emergency]::label {
 	text-position: center;
-	text-offset: -18;
+	text-offset: -21;
     text: name;
 	z-index: 6;
 	fill-opacity:0;

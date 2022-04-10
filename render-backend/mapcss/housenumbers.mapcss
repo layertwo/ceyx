@@ -6,7 +6,7 @@ way|z15-:closed [addr:housenumber]::housenumber {
     z-index: 7;
     width: 0;
     fill-opacity: 0;
-    font-size: 13;
+    font-size: 15;
     text-color: #000;
     text-halo-color: #fff;
     text-halo-radius: 1;
