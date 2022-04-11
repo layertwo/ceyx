@@ -189,7 +189,7 @@ function processProject($jobid, $date, $counter) {
 	if(is_file("previews/$jobid.png")) {
 		$preview = "previews/$jobid.png";
 	} else {
-		$preview = "images/render_progress2.gif"; // image made from output
+		$preview = "images/render_progress2comp.gif"; // image made from output
 	}
 	// Output project as HTML
 ?>
