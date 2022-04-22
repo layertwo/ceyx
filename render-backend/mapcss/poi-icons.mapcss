@@ -274,7 +274,8 @@ node|z14- [public_transport=platform]::icon { icon-image: icons/sjjb/transport_b
 node|z14- [highway=bus_stop]::icon { icon-image: icons/sjjb/transport_bus_stop.p.0092DA.24.png; }
 
 /* Highway features */
-node|z14- [highway=crossing]::icon { icon-image: icons/sjjb/zebra_crossing_feri.png; }
+node|z14- [highway=crossing]::icon { icon-image: icons/sjjb/x_add_zebra_crossing.png; }
+node|z14- [highway=crossing][crossing=unmarked]::icon { icon-image: icons/sjjb/x_add_walk.24.png; }
 node|z14- [highway=give_way]::icon {z-index:6; icon-image: icons/sjjb/give_way_feri.png;}
 node|z14- [highway=street_lamp]::icon {z-index:6; icon-image: icons/sjjb/lamp_feri.png;}
 
