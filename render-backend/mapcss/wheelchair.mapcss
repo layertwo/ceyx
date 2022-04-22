@@ -35,19 +35,36 @@ way|z15- [addr:interpolation]::housenumber {
 /* Wheelchair */
 node|z14- [wheelchair=1]::icon,
 way|z14-:closed [wheelchair=1]::icon {
-    icon-image: icons/sjjb/wheelok30.png;
+    icon-image: icons/sjjb/x_add_wheelok.24.png;
 }
 node|z14- [wheelchair=no]::icon,
 way|z14-:closed [wheelchair=no]::icon {
-    icon-image: icons/sjjb/wheelno30.png;
+    icon-image: icons/sjjb/x_add_wheelno.24.png;
 }
 node|z14- [wheelchair=limited]::icon,
 way|z14-:closed [wheelchair=limited]::icon {
-    icon-image: icons/sjjb/wheellimit30.png;
+    icon-image: icons/sjjb/x_add_wheellimit.24.png;
 }
-node|z14- [wheelchair]::label,
-way|z14-:closed [wheelchair]::label {
-	text-offset: -23; /* For bigger icons */
+node|z14- [kerb=flush]::icon {
+    icon-image: icons/sjjb/x_add_kerb-flush.png;
+}
+node|z14- [kerb=lowered]::icon {
+    icon-image: icons/sjjb/x_add_kerb-lowered.png;
+}
+node|z14- [kerb=no]::icon {
+    icon-image: icons/sjjb/x_add_kerb-no.png;
+}
+node|z14- [kerb=other]::icon {
+    icon-image: icons/sjjb/x_add_kerb-other.png;
+}
+node|z14- [kerb=raised]::icon {
+    icon-image: icons/sjjb/x_add_kerb-raised.png;
+}
+node|z14- [kerb=rolled]::icon {
+    icon-image: icons/sjjb/x_add_kerb-rolled.png;
+}
+node|z14- [kerb=yes]::icon {
+    icon-image: icons/sjjb/x_add_kerb-yes.png;
 }
 
 @import url("highways.mapcss");
