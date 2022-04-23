@@ -310,6 +310,7 @@ node|z14- [highway=street_lamp]::icon {z-index:6; icon-image: icons/sjjb/lamp_fe
 /* Barriers - nodes default to an "x" */
 node|z14- [barrier] { icon-image: icons/sjjb/x16.png; }
 node|z14- [barrier=entrance]{ icon-image: icons/sjjb/barrier_entrance.png; }
+node|z14- [entrance]{ icon-image: icons/sjjb/barrier_entrance.png; }
 node|z14- [barrier=gate] { icon-image: icons/sjjb/barrier_gate.p.000000.24.png; }
 node|z14- [barrier=block] { icon-image: icons/sjjb/barrier_blocks.p.000000.24.png; }
 node|z14- [barrier=bollard] { icon-image: icons/sjjb/barrier_bollard.p.000000.24.png; }
