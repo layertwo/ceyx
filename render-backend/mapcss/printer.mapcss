@@ -20,7 +20,11 @@ way|z14-:closed[man_made],
 way|z14-:closed[historic],
 way|z14-:closed[railway],
 way|z14-:closed[public_transport],
-way|z14-:closed[emergency] {
+way|z14-:closed[emergency],
+way|z14-:closed[advertising],
+way|z14-:closed[natural],
+way|z14-:closed[power],
+way|z14-:closed[military] {
 	color: black; 
 	fill-color: none;
 	width: 1;
@@ -55,12 +59,12 @@ node|z13- [place] { font-size: 18; }
 /* FIXME: remove original POI stuff!? */
 
 /* Misc */
-node|z15- [natural=tree] { icon-image: icons/mapnik/tree2.png; }
-way|z14- [leisure=pitch] { fill-color: #acf3ac; }
+way|z13- [leisure=pitch] { fill-color: #acf3ac; }
 way|z13- [landuse=cemetery] { color: black; width: 1; fill-color: #efefef; }
-way|z14- [leisure=playground] { fill-color: #eff6a5; }
-way|z14- [leisure=park] { fill-color: #aef09f; fill-opacity: 0.2;}
+way|z13- [leisure=playground] { fill-color: #eff6a5; }
+way|z13- [leisure=park]::area { fill-color: #aef09f; fill-opacity: 0.2;}
 way|z14- [barrier=fence] { color: #888; width: 1; }
+way|z14- [natural=tree_row] { color: #34ae36; width: 20; opacity: 0.5; linecap: round; }
 
 /* Z-Index only */
 way|z14-:closed [leisure=park] { z-index: -0.8; }

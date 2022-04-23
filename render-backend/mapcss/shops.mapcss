@@ -2,8 +2,8 @@
 @import url("printer.mapcss");
 
 /* Show housenumber unless this is a POI (POI LIST COPY) */
-node|z15- [addr:housenumber][!highway][!tourism][!amenity][!shop][!craft][!leisure][!gambling][!office][!man_made][!historic][!public_transport][!railway][!emergency]::housenumber,
-way|z15-:closed [addr:housenumber][!highway][!tourism][!amenity][!shop][!craft][!leisure][!gambling][!office][!man_made][!historic][!railway][!public_transport][!emergency]::housenumber {
+node|z15- [addr:housenumber][!highway][!tourism][!amenity][!shop][!craft][!leisure][!gambling][!office][!man_made][!historic][!public_transport][!railway][!emergency][!advertising][!natural][!power][!military]::housenumber,
+way|z15-:closed [addr:housenumber][!highway][!tourism][!amenity][!shop][!craft][!leisure][!gambling][!office][!man_made][!historic][!railway][!public_transport][!emergency][!advertising][!natural][!power][!military]::housenumber {
     z-index: 5;
     width: 0;
     fill-opacity: 0;

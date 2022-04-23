@@ -20,7 +20,11 @@ node|z15-[man_made]::icon,
 node|z15-[historic]::icon,
 node|z15-[railway]::icon,
 node|z15-[public_transport]::icon,
-node|z15-[emergency]::icon {
+node|z15-[emergency]::icon,
+node|z15-[advertising]::icon,
+node|z15-[natural]::icon,
+node|z15-[power]::icon,
+node|z15-[military]::icon {
 	icon-image: icons/sjjb/dot16.png;
 	z-index: 6;
 }
@@ -37,7 +41,11 @@ way|z15-[man_made]::icon,
 way|z15-[historic]::icon,
 way|z15-[railway]::icon,
 way|z15-[public_transport]::icon,
-way|z15-[emergency]::icon {
+way|z15-[emergency]::icon,
+way|z15-[advertising]::icon,
+way|z15-[natural]::icon,
+way|z15-[power]::icon,
+way|z15-[military]::icon {
 	z-index: 6;
 	fill-opacity:0;
 }
@@ -59,6 +67,8 @@ node|z15- [highway=crossing][!name]::label,
 node|z15- [highway=traffic_signals][!name]::label,
 node|z15- [highway=give_way][!name]::label,
 node|z15- [highway=street_lamp][!name]::label,
+node|z15- [natural=tree][!name]::label,
+way|z15- [natural=tree_row][!name]::label,
 node|z15- [emergency=fire_hydrant][!name][!ref]::label {
 	text: none;
 }
@@ -79,6 +89,10 @@ node|z15-[disused:historic]::icon,
 node|z15-[disused:railway]::icon,
 node|z15-[disused:public_transport]::icon,
 node|z15-[disused:emergency]::icon,
+node|z15-[disused:advertising]::icon,
+node|z15-[disused:natural]::icon,
+node|z15-[disused:power]::icon,
+node|z15-[disused:military]::icon,
 
 node|z15-[abandoned:highway]::icon, 
 node|z15-[abandoned:amenity]::icon, 
@@ -92,7 +106,11 @@ node|z15-[abandoned:man_made]::icon,
 node|z15-[abandoned:historic]::icon,
 node|z15-[abandoned:railway]::icon,
 node|z15-[abandoned:public_transport]::icon,
-node|z15-[abandoned:emergency]::icon {
+node|z15-[abandoned:emergency]::icon,
+node|z15-[abandoned:advertising]::icon,
+node|z15-[abandoned:natural]::icon,
+node|z15-[abandoned:power]::icon,
+node|z15-[abandoned:military]::icon {
 	icon-image: icons/sjjb/dot16.png;
 	z-index: 6;
 }
@@ -267,6 +285,10 @@ node|z14- [man_made=windmill]::icon { icon-image: icons/sjjb/tourist_windmill.p.
 
 /* Emergency */
 node|z14- [emergency=fire_hydrant]::icon { icon-image: icons/sjjb/fire_hydrant_feri.png; }
+
+/* Natural icons */
+node|z14- [natural=tree]::icon { icon-image: icons/sjjb/landuse_deciduous.p.39AC39.24.png; }
+node|z14- [natural=tree][leaf_type=needleleaved]::icon { icon-image: icons/sjjb/landuse_coniferous.p.39AC39.24.png; }
 
 /* Public transport */
 node|z14- [public_transport=stop_position]::icon { icon-image: icons/sjjb/dot8.png; }

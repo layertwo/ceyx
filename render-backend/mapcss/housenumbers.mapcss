@@ -42,7 +42,11 @@ node|z15-[man_made][!addr:housenumber]::icon,
 node|z15-[historic][!addr:housenumber]::icon,
 node|z15-[railway][!addr:housenumber]::icon,
 node|z15-[public_transport][!addr:housenumber]::icon,
-node|z15-[emergency][!addr:housenumber]::icon {
+node|z15-[emergency][!addr:housenumber]::icon,
+node|z15-[advertising][!addr:housenumber]::icon,
+node|z15-[natural][!addr:housenumber]::icon,
+node|z15-[power][!addr:housenumber]::icon,
+node|z15-[military][!addr:housenumber]::icon {
 	icon-image: icons/sjjb/dot16.png;
 	z-index: 6;
 }

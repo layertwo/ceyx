@@ -14,3 +14,7 @@ POI categories
  * railway
  * public_transport
  * emergency
+ * advertising
+ * natural
+ * power
+ * military

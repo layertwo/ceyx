@@ -21,7 +21,11 @@ node|z15-[building]::label,
 node|z15-[historic]::label,
 node|z15-[railway]::label,
 node|z15-[public_transport]::label,
-node|z15-[emergency]::label {
+node|z15-[emergency]::label,
+node|z15-[advertising]::label,
+node|z15-[natural]::label,
+node|z15-[power]::label,
+node|z15-[military]::label {
     font-size: 15;
     text: name;
 	text-offset: -21;
@@ -43,7 +47,11 @@ way|z15-[building]::label,
 way|z15-[historic]::label,
 way|z15-[railway]::label,
 way|z15-[public_transport]::label,
-way|z15-[emergency]::label {
+way|z15-[emergency]::label,
+way|z15-[advertising]::label,
+way|z15-[natural]::label,
+way|z15-[power]::label,
+way|z15-[military]::label {
     font-size: 15;
     text: name;
 	z-index: 6;
@@ -63,7 +71,11 @@ way|z14-:closed[man_made]::label,
 way|z14-:closed[historic]::label,
 way|z14-:closed[railway]::label,
 way|z14-:closed[public_transport]::label,
-way|z14-:closed[emergency]::label {
+way|z14-:closed[emergency]::label,
+way|z14-:closed[advertising]::label,
+way|z14-:closed[natural]::label,
+way|z14-:closed[power]::label,
+way|z14-:closed[military]::label {
 	text-position: center;
 	text-offset: -21;
     text: name;
@@ -128,6 +140,26 @@ way|z15-[public_transport][!name]::label {
 node|z15-[emergency][!name]::label,
 way|z15-[emergency][!name]::label {
 	text: emergency;
+}
+
+node|z15-[advertising][!name]::label,
+way|z15-[advertising][!name]::label {
+	text: advertising;
+}
+
+node|z15-[natural][!name]::label,
+way|z15-[natural][!name]::label {
+	text: natural;
+}
+
+node|z15-[power][!name]::label,
+way|z15-[power][!name]::label {
+	text: power;
+}
+
+node|z15-[military][!name]::label,
+way|z15-[military][!name]::label {
+	text: military;
 }
 
 /* IMPORTANT: poi-icons.mapcss hides these "noname-labels" when icon is obvious! */
