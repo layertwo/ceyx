@@ -107,6 +107,10 @@ node|z15-[leisure][!name]::label,
 way|z15-[leisure][!name]::label {
 	text: leisure;
 }
+node|z15-[leisure=pitch][sport][!name]::label,
+way|z15-[leisure=pitch][sport][[!name]::label {
+	text: sport;
+}
 node|z15-[gambling][!name]::label,
 way|z15-[gambling][!name]::label {
 	text: gambling;
